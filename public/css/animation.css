@@ -1,0 +1,7 @@
+@keyframes moveDown {
+    from {
+        transform: translateY(-80%);
+    }to {
+        transform: translateY(-50%);
+    }
+}

@@ -1,0 +1,70 @@
+/* footer */
+footer {
+    width: 100%;
+    background-color: var(--white-color);
+    border-top: 1px solid #ececec;
+}
+
+.footer-main {
+    max-width: var(--width-1200);
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 0 0;
+}
+
+.footer-main ul {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-main ul>li {
+    font-size: 0.9rem;
+}
+
+.footer-main ul>li>a:hover {
+    color: var(--blue-color);
+}
+
+.phone-help a {
+    font-weight: 600;
+    color: var(--blue-color);
+}
+
+.certification {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.certification img:first-child {
+    width: 44px;
+}
+
+.certification img:last-child {
+    width: 140px;
+}
+
+.help-pay-item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.help-pay-item img {
+    width: 100%;
+}
+
+.copy-right {
+    font-size: 0.9rem;
+    height: 40px;
+    background-color: var(--matte-white-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

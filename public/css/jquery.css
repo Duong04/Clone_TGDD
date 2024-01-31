@@ -1,0 +1,70 @@
+.slick-slide {
+    margin: 0 10px;
+}
+
+.slick-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: 16px;
+    color: var(--text-color);
+    box-shadow: 0 0 3px #ccc;
+    border: none;
+    z-index: 2;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    width: 43px;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all linear 0.5s;
+}
+
+.slick-arrow:hover {
+    background-color: var(--white-color);
+}
+
+.slick-prev{
+    left: -10px;
+}
+
+.slick-next{
+    right: -10px;
+}
+
+.banner-main .slick-arrow{
+    width: 35px;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+}
+
+.slick-dots {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slick-dots button {
+    font-size: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+.slick-dots button:hover {
+    background-color: var(--orange-color);
+}
+
+.slick-active button {
+    background-color: var(--orange-color);
+}
