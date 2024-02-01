@@ -71,6 +71,387 @@
                 <a href=""><img src="./public/img/subcategories/logo-iphone-220x48.png" alt=""></a>
                 <a href=""><img src="./public/img/subcategories/logo-iphone-220x48.png" alt=""></a>
             </div>
+            <div class="filter">
+                <h4>100 điện thoại</h4>
+                <div class="checked">
+                    <input type="checkbox" name="discount" id="discount">
+                    <label for="discount">Giảm giá</label>
+                </div>
+                <div class="checked">
+                    <input type="checkbox" name="latest" id="latest">
+                    <label for="latest">Mới nhất</label>
+                </div>
+                <select name="" id="">
+                    <option value="">Giá</option>
+                    <option value="">Dưới 1 triệu</option>
+                    <option value="">Từ 1 - 5 triệu</option>
+                    <option value="">Từ 5 - 10 triệu</option>
+                    <option value="">Từ 10 - 15 triệu</option>
+                    <option value="">Từ 15 - 20 triệu</option>
+                    <option value="">Trên 20 triệu</option>
+                </select>
+                <select name="" id="">
+                    <option value="">Sắp xếp</option>
+                    <option value="">Sắp xếp nổi bật</option>
+                    <option value="">Giá cao đến thấp</option>
+                    <option value="">Giá thấp đến cao</option>
+                    <option value="">Từ A - Z</option>
+                    <option value="">Từ Z - A</option>
+                </select>
+            </div>
+            <div class="list-product">
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="product-item">
+                    <a href="">
+                        <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
+                        <h5>iPhone 15 Pro Max</h4>
+                        <div class="item-txt-online">
+                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <span>Online giá rẻ quá</span>
+                        </div>
+                        <div class="old-price">
+                            <del>10.000.000<sup>₫</sup></del>
+                            <span>-8%</span>
+                        </div>
+                        <div class="price">
+                            31.000.000<sup>₫</sup>
+                        </div>
+                        <div class="star">
+                            <div>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <span>100</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </article>
         <!-- footer -->
         <?php include "./app/views/customer/includes/footer.php" ?>

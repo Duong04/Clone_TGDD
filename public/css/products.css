@@ -30,6 +30,43 @@ article {
     width: 100%;
 }
 
+.filter {
+    margin: 20px 0;
+    display: flex;
+    height: auto;
+    align-items: center;
+    gap: 25px;
+}
+
+.filter select {
+    height: 33px;
+    border: none;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.filter select:focus {
+    outline: none;
+    border: 1px solid var(--blue-color);
+}
+
+.filter option {
+    font-size: 0.9rem;
+}
+
+.checked {
+    font-size: 0.9rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.checked input {
+    width: 16px;
+    height: 16px;
+}
+
 .lst-quickfilter {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
@@ -51,4 +88,92 @@ article {
 
 .lst-quickfilter a:hover {
     border: 1.5px solid var(--blue-color);
+}
+
+.list-product {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.product-item {
+    height: 430px;
+    border: 1px solid #e0e0e0;
+}
+
+.product-item:hover {
+    box-shadow: 0 0 3px var(--grey-color);
+}
+
+.product-item a {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.product-item img {
+    width: 100%;
+    transition: all ease 0.4s;
+}
+
+.product-item h5 {
+    font-weight: 400;
+    font-size: 1.0rem;
+    color: var(--text-color);
+    margin-top: 13px;
+}
+
+.item-txt-online {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.item-txt-online img {
+    width: 15px;
+}
+
+.item-txt-online span {
+    font-size: 0.85rem;
+}
+
+.old-price {
+    height: auto;
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.price {
+    color: #e83a45;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.star {
+    height: auto;
+    color: var(--orange-color);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    margin-top: 5px;
+}
+
+.star span {
+    color: var(--text-color);
+}
+
+.product-item a:hover h5 {
+    color: var(--blue-color);
+}
+
+.product-item a:hover>img {
+    transform: translateY(-10px);
 }

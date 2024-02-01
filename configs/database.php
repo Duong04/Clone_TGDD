@@ -3,24 +3,24 @@
         private $serverName = 'mysql:host=localhost;dbname=demo;charset=utf8';
         private $userName = 'root';
         private $password = '';
-        private $connect;
+        private $connection;
 
         function __construct() {
             try {
-                $this->connect = new PDO($this->serverName, $this->userName, $this->password);
-                $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $this->connection = new PDO($this->serverName, $this->userName, $this->password);
+                $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch(PDOException $e) {
-                echo "Connection failed: " . $e->getMessage();
+                echo "Connectionion failed: " . $e->getMessage();
             }
         }
 
-        protected function getConnect() {
-            return $this->connect;
+        protected function getConnection() {
+            return $this->connection;
         }
 
         function selectAll($sql) {
             try {
-                $conn = $this->getConnect();
+                $conn = $this->getConnection();
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
@@ -34,7 +34,7 @@
 
         function selectAllWithId($sql, $value) {
             try {
-                $conn = $this->getConnect();
+                $conn = $this->getConnection();
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare($sql);
                 $stmt->execute($value);
@@ -49,7 +49,7 @@
 
         function selectOne($sql, $value) {
             try {
-                $conn = $this->getConnect();
+                $conn = $this->getConnection();
                 $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare($sql);
                 $stmt -> execute($value);
@@ -63,7 +63,7 @@
 
         function cud($sql, $value) {
             try {
-                $conn = $this->getConnect();
+                $conn = $this->getConnection();
                 $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare($sql);
                 $stmt -> execute($value);
@@ -76,7 +76,7 @@
 
         function insertGetId($sql, $value, &$lastInsertId) {
             try {
-                $conn = $this->getConnect();
+                $conn = $this->getConnection();
                 $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conn->prepare($sql);
                 $stmt -> execute($value);
@@ -88,5 +88,8 @@
             }
         }
 
+        function __destruct() {
+            $this->connection = null;
+        }
     }
 ?>
