@@ -34,10 +34,12 @@
                     </tfoot>
                     <tbody>
                         <?php
+                            $stt = 0;
                             foreach($datas['rows'] as $row) {
+                                $stt++;
                         ?>
                         <tr data-id="<?=$row['subcat_id']?>">
-                            <td><?=$row['subcat_id']?></td>
+                            <td><?=$stt?></td>
                             <td><?=$row['subcat_name']?></td>
                             <td><img style="width: 90px;" src="<?=$row['subcat_image']?>" alt=""></td>
                             <td><?=$row['category_name']?></td>

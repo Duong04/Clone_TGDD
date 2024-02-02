@@ -44,17 +44,3 @@ $(document).ready(function() {
         });
     });
 });
-
-$(document).ready(function() {
-    $('#category_id2').change(function() {
-        const id = $(this).val();
-        $.ajax({
-            url: "./Admin/Subcategories",
-            method: "POST",
-            data: { category_id2: id },
-            success: function(data) {
-                $('#subcat_id2').html(data);
-            },
-        });
-    });
-});

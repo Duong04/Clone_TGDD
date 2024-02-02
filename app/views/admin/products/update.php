@@ -1,4 +1,4 @@
-<div class="container-fluid">
+`<div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Thêm danh mục sản phẩm</h1>
@@ -35,8 +35,8 @@
                 <input oninput="validateDiscount(this)" value="<?=$datas['row']['discount']?>" name="discount" type="number" class="form-control" id="discount" placeholder="% giảm giá">
             </div>
             <div class="col-md-6 mb-3">
-                <label for="category_id2">Danh mục sản phẩm</label>
-                <select required name="category_id" id="category_id2" class="form-control">
+                <label for="category_id">Danh mục sản phẩm</label>
+                <select required name="category_id" id="category_id" class="form-control">
                     <?php foreach($datas['list'] as $category){ 
                             if ($datas['row']['category_id'] == $category['category_id']) {
                     ?>
@@ -47,8 +47,8 @@
                 </select>
             </div>
             <div class="col-md-6 mb-3">
-                <label for="subcat_id2">Danh mục con</label>
-                <select required name="subcat_id" id="subcat_id2" class="form-control">
+                <label for="subcat_id">Danh mục con</label>
+                <select required name="subcat_id" id="subcat_id" class="form-control">
                     <option value="0">Danh mục con</option>
                 </select>
             </div>

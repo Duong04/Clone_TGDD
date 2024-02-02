@@ -31,10 +31,12 @@
                     </tfoot>
                     <tbody>
                         <?php
+                            $stt = 0;
                             foreach($datas['rows'] as $row) {
+                                $stt++;
                         ?>
                         <tr data-id="<?=$row['category_id']?>">
-                            <td><?=$row['category_id']?></td>
+                            <td><?=$stt?></td>
                             <td><?=$row['category_name']?></td>
                             <td><?=$row['user_name']?></td>
                             <td>

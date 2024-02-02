@@ -12,7 +12,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="category-name" class="form-label">Tên danh mục</label>
-                <input type="text" class="form-control" id="category-name" name="category-name" placeholder="Tên danh mục">
+                <input required type="text" class="form-control" id="category-name" name="category-name" placeholder="Tên danh mục">
             </div>
             <div class="col-md-4">
                 <button class="form-control btn btn-primary col-md-3" name="submit">Thêm</button>

@@ -1,99 +1,116 @@
 <?php 
     class Admin extends Controller {
         function index() {
-            $this->view('admin/layouts/layoutAdmin', 
-                        ['folder'=>'dashboard', 'page'=>'dashboard']);
+            $this->view('admin/layouts/layoutAdmin', ['folder'=>'dashboard', 'page'=>'dashboard']);
         }
 
+        // function Notification
+        function showSuccessMessage($message) {
+            echo "<script>
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: '$message',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+            </script>";
+        }
+    
+        function showInfoMessage($message) {
+            echo "<script>
+                Swal.fire({
+                    title: 'Cảnh báo!',
+                    text: '$message',
+                    icon: 'info',
+                    timer: 3000,
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown animate__faster'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutDown animate__faster'
+                    }
+                });
+            </script>";
+        }
+    
         // ---------------- Categories -----------------------
+    
         function listCategories() {
             $model = $this->model('CategoriesModels');
             $rows = $model->selectCategories();
-            $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'categories', 
-                        'page'=>'list',
-                        'rows'=>$rows]);
+            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'list', 'rows'=>$rows]);
         }
-
+    
         function addCategory() {
-            $model = $this->model('CategoriesModels');
-            $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'categories', 
-                        'page'=>'add']);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $name = $_POST['category-name'];
-                    $user_id = $_SESSION['user_id'];
-
-                    $query = $model->addCategory($name, $user_id);
-
-                    if ($query) {
-                        echo "<script>
-                                Swal.fire({
-                                    title: 'Thành công!',
-                                    text: 'Thêm thành công',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 1000
-                                });
-                            </script>";
-                    }
-                }
+            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'add']);
+            
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processAddCategory();
             }
         }
-
-        function deleteCategories() {
+    
+        function processAddCategory() {
             $model = $this->model('CategoriesModels');
-            $id = $_POST['id'];
+            $name = $_POST['category-name'];
+            $user_id = $_SESSION['user_id'];
+    
+            $checkName = $model->selectCategoryName($name);
+            if ($checkName == null) {
+                $query = $model->addCategory($name, $user_id);
+    
+                if ($query) {
+                    $this->showSuccessMessage('Thêm thành công');
+                }
+            } else {
+                $this->showInfoMessage('Tên danh mục đã tồn tại');
+            }
+        }
+    
+        function deleteCategories() {
             if (isset($_POST['id'])) {
+                $model = $this->model('CategoriesModels');
+                $id = $_POST['id'];
                 $result = $model->deleteCategories($id);
                 if ($result) {
                     echo "true"; 
                 }
             }
         }
-
+    
         function updateCategory($id=null) {
             $model = $this->model('CategoriesModels');
             if (isset($id)) {
                 $row = $model->selectCategoryId($id);
             }
-            $this->view('admin/layouts/layoutAdmin',
-            ['folder'=>'categories', 
-            'page'=>'update',
-            'row'=>$row]);
+            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'update', 'row'=>$row]);
         }
-
+    
         function handleCategory() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processUpdateCategory();
+            }
+        }
+    
+        function processUpdateCategory() {
             $model = $this->model('CategoriesModels');
-            $rows = $model->selectCategories();
-            $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'categories', 
-                    'page'=>'list',
-                    'rows'=>$rows]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $name = $_POST['category-name'];
-                    $user_id = $_SESSION['user_id'];
-                    $id = $_POST['id'];
-            
-                    $query = $model->updateCategory($name, $user_id, $id);
-            
-                    if ($query) {
-                        echo "<script>
-                                Swal.fire({
-                                    title: 'Thành công!',
-                                    text: 'Cập nhật thành công',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 1000
-                                });
-                                setTimeout(function() {
-                                    window.location.href = './Admin/HandleCategory';
-                                },800);
-                            </script>";
-                    }
+            $name = $_POST['category-name'];
+            $user_id = $_SESSION['user_id'];
+            $id = $_POST['id'];
+        
+            $checkId = $model->selectCategoryId($id);
+            $checkName = $model->selectCategoryName($name);
+            if ($checkName == null || $checkId['category_name'] == $name) {
+                $query = $model->updateCategory($name, $user_id, $id);
+                $rows = $model->selectCategories();
+                $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'list', 'rows'=>$rows]);
+                if ($query) {
+                    $this->showSuccessMessage('Cập nhật thành công');
                 }
+            } else {
+                $row = $model->selectCategoryId($id);
+                $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'update', 'row'=>$row]);
+                $this->showInfoMessage('Tên danh mục đã tồn tại');
             }
         }
 
@@ -111,13 +128,6 @@
                 }
             }
 
-            if (isset($_POST['category_id2'])) {
-                $lists = $model->selectSubcategories($_POST['category_id2']);
-                foreach ($lists as $list) {
-                    echo "<option value='".$list['subcat_id']."'>".$list['subcat_name']."</option>";
-                }
-            }
-
             $this->view('admin/layouts/layoutAdmin',
                     ['folder'=>'subcategories', 
                     'page'=>'list',
@@ -126,32 +136,32 @@
         }
 
         function addSubcat($category_id) {
-            $model = $this->model('SubcategoriesModels');
             $this->view('admin/layouts/layoutAdmin',
                     ['folder'=>'subcategories', 
                     'page'=>'add',
                     'category_id'=>$category_id]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $name = $_POST['name'];
-                    $image = $_FILES['image']['name'];
-                    $user_id = $_SESSION['user_id'];
-                    $targetDir = './public/img/subcategories/';
-                    $targetFile = $targetDir . basename($image);
-                    move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
-                    $query = $model->addSubcategory($name, $targetFile, $category_id, $user_id);
-                    if ($query) {
-                        echo "<script>
-                                Swal.fire({
-                                    title: 'Thành công!',
-                                    text: 'Thêm thành công',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 1000
-                                });
-                            </script>";
-                    }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processAddSubcat($category_id);
+            }
+        }
+
+        function processAddSubcat($category_id) {
+            $model = $this->model('SubcategoriesModels');
+            $name = $_POST['name'];
+            $image = $_FILES['image']['name'];
+            $user_id = $_SESSION['user_id'];
+            $targetDir = './public/img/subcategories/';
+            $targetFile = $targetDir . basename($image);
+
+            $checkName = $model->selectSubName($name, $category_id);
+            if ($checkName == null) {
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
+                $query = $model->addSubcategory($name, $targetFile, $category_id, $user_id);
+                if ($query) {
+                    $this->showSuccessMessage('Thêm thành công!');
                 }
+            }else {
+                $this->showInfoMessage('Tên danh mục con đã tồn tại!');
             }
         }
 
@@ -179,40 +189,43 @@
         }
 
         function handleSubcat($category_id) {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processUpdateSubcat($category_id);
+            }
+        }
+
+        function processUpdateSubcat($category_id) {
             $model = $this->model('SubcategoriesModels');
-            $rows = $model->selectSubcategories($category_id);
-            $this->view('admin/layouts/layoutAdmin',
+            $name = $_POST['name'];
+            $subcat_id = $_POST['subcat_id'];
+            $user_id = $_SESSION['user_id'];
+            $image = $_FILES['image']['name'];
+            $targetDir = './public/img/subcategories/';
+            $targetFile = $targetDir . basename($image);
+            $checkId = $model->selectSubcatId($subcat_id);
+            $checkName = $model->selectSubName($name, $category_id);
+
+            if ($checkName == null || $checkId['subcat_name'] == $name) {
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetFile); 
+                $query = $model->updateSubcat($name, $targetFile, $user_id, $subcat_id, $image);
+                $rows = $model->selectSubcategories($category_id);
+                $this->view('admin/layouts/layoutAdmin',
                     ['folder'=>'subcategories', 
                     'page'=>'list',
                     'category_id'=>$category_id,
                     'rows'=>$rows]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $name = $_POST['name'];
-                    $subcat_id = $_POST['subcat_id'];
-                    $user_id = $_SESSION['user_id'];
-                    $image = $_FILES['image']['name'];
-                    $targetDir = './public/img/subcategories/';
-                    $targetFile = $targetDir . basename($image);
-                    move_uploaded_file($_FILES['image']['tmp_name'], $targetFile); 
-            
-                    $query = $model->updateSubcat($name, $targetFile, $user_id, $subcat_id, $image);
-            
-                    if ($query) {
-                        echo "<script>
-                                Swal.fire({
-                                    title: 'Thành công!',
-                                    text: 'Cập nhật thành công',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 1000
-                                });
-                                setTimeout(function() {
-                                    window.location.href = './Admin/HandleSubcat/$category_id';
-                                },800);
-                            </script>";
-                    }
+                
+                if ($query) {
+                    $this->showSuccessMessage('Cập nhật thành công!');
                 }
+            }else {
+                $row = $model->selectSubcatId($subcat_id);
+                $this->view('admin/layouts/layoutAdmin',
+                    ['folder'=>'subcategories', 
+                    'page'=>'update',
+                    'category_id'=>$category_id,
+                    'row'=>$row]);
+                $this->showInfoMessage('Tên danh mục con đã tồn tại');
             }
         }
 
@@ -229,47 +242,49 @@
         function addProduct() {
             $model2 = $this->model('CategoriesModels');
             $listCat = $model2->selectCategories();
-            $model = $this->model('ProductsModels');
             $this->view('admin/layouts/layoutAdmin',
                         ['folder'=>'products', 
                         'page'=>'add',
                         'list'=>$listCat]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $name = $_POST['product_name'];
-                    $image = $_FILES['product_image']['name'];
-                    $listImage = $_FILES['library_image']['name'];
-                    $quantity = $_POST['product_quantity'];
-                    $price = $_POST['initial_price'];
-                    $discount = $_POST['discount'];
-                    $category_id = $_POST['category_id'];
-                    $subcat_id = $_POST['subcat_id'];
-                    $desc = $_POST['description'];
-                    $user_id = $_SESSION['user_id'];
-                    $countPrice = $price - ($price * ($discount / 100));
-                    $newPrice = $discount > 0 ? $countPrice : 0;
-                    $targetDir = './public/img/products/';
-                    $target_file = $targetDir . basename($image);
-                    move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file);
-                    $query = $model->insertProduct($name, $target_file, $desc, $quantity, $price, $discount, $newPrice, $category_id, $subcat_id, $user_id);
-                    if ($query) {
-                        foreach ($listImage as $key => $value) {
-                            $target_file2 = $targetDir . basename($value);
-                            move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
-                            $query2 = $model->insertLibrary($target_file2, $query);
-                            if ($query2) {
-                                echo '<script>
-                                            Swal.fire({
-                                                title: "Thành công!",
-                                                text: "Thêm sản phẩm thành công!",
-                                                icon: "success",
-                                                timer: 1000
-                                            });
-                                        </script>';
-                            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processAddProduct();
+            }
+        }
+
+        function processAddProduct() {
+            $model = $this->model('ProductsModels');
+            $name = $_POST['product_name'];
+            $image = $_FILES['product_image']['name'];
+            $listImage = $_FILES['library_image']['name'];
+            $quantity = $_POST['product_quantity'];
+            $price = $_POST['initial_price'];
+            $discount = $_POST['discount'];
+            $category_id = $_POST['category_id'];
+            $subcat_id = $_POST['subcat_id'];
+            $desc = $_POST['description'];
+            $user_id = $_SESSION['user_id'];
+            $countPrice = $price - ($price * ($discount / 100));
+            $newPrice = $discount > 0 ? $countPrice : 0;
+            $targetDir = './public/img/products/';
+            $target_file = $targetDir . basename($image);
+
+            $checkName = $model->selectProductName($name, $subcat_id);
+
+            if ($checkName == null) {
+                move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file);
+                $query = $model->insertProduct($name, $target_file, $desc, $quantity, $price, $discount, $newPrice, $category_id, $subcat_id, $user_id);
+                if ($query) {
+                    foreach ($listImage as $key => $value) {
+                        $target_file2 = $targetDir . basename($value);
+                        move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
+                        $query2 = $model->insertLibrary($target_file2, $query);
+                        if ($query2) {
+                            $this->showSuccessMessage('Thêm sản phẩm thành công!');
                         }
                     }
                 }
+            }else {
+                $this->showInfoMessage('Tên sản phẩm đã tồn tại!');
             }
         }
 

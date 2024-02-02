@@ -10,6 +10,11 @@
             return $this->selectOne($sql, [$id]);
         }
 
+        function selectCategoryName($name) {
+            $sql = "SELECT * FROM categories WHERE category_name = ?";
+            return $this->selectOne($sql, [$name]);
+        }
+
         function deleteCategories($id) {
             $sql = "DELETE FROM categories WHERE category_id = ?";
             return $this->cud($sql, [$id]);

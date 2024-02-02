@@ -30,6 +30,11 @@
             return $this->selectOne($sql, [$id]);
         }
 
+        function selectSubName($name, $category_id) {
+            $sql = "SELECT * FROM subcategories WHERE subcat_name = ? AND category_id = ?";
+            return $this->selectOne($sql, [$name, $category_id]);
+        }
+
         function updateSubcat($name, $image, $user_id, $subcat_id, $checkImage) {
             if ($checkImage != '') {
                 $sql = "UPDATE subcategories SET subcat_name = ?, subcat_image = ?, user_id = ? WHERE subcat_id = ?";

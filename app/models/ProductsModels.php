@@ -16,6 +16,11 @@
             return $this->selectOne($sql, [$id]);
         }
 
+        function selectProductName($name, $subcat_id) {
+            $sql = "SELECT * FROM products WHERE product_name = ? AND subcat_id = ?";
+            return $this->selectOne($sql, [$name, $subcat_id]);
+        }
+
         function insertProduct($name, $image, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id) {
             $sql = "INSERT INTO products (product_name, product_image, description, product_quantity, initial_price, discount, new_price, category_id, subcat_id, user_id) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
