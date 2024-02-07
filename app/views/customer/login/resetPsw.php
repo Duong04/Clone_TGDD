@@ -102,7 +102,7 @@
                 <h3>Cập nhật mật khẩu</h3>
                 <form action="" method="POST" id="registration-form">
                     <div class="form-item">
-                        <input id="psw" name="psw" type="password" placeholder="Mật khẩu">
+                        <input autofocus id="psw" name="psw" type="password" placeholder="Mật khẩu">
                         <div class="error" id="psw-error"></div>
                     </div>
                     <div class="form-item">

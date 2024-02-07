@@ -1,6 +1,10 @@
 <?php 
     class UserAuthentication extends Controller {
         function index() {
+            header('Location: ./UserAuthentication/Login');
+        }
+
+        function login() {
             $model = $this->model('UserModels');
             $errorEmail = '';
             $errorPsw = '';
@@ -25,7 +29,7 @@
                                 $_SESSION['role'] = $role;
                                 $_SESSION['user_id'] = $user_id;
                                 $_SESSION['status'] = $status;
-                                header('Location: ./');
+                                header('Location: ../');
                             }else {
                                 $errorPsw = 'Mật khẩu không đúng';
                             }

@@ -1,8 +1,9 @@
 <?php 
     class App {
-        protected $controller = "Home";
-        protected $action = "index";
-        protected $params = [];
+        private $controller = "Home";
+        private $action = "index";
+        private $params = [];
+        private $router;
         function __construct() {
             $url = $this->UrlProcess();
 
@@ -31,7 +32,7 @@
 
         }
 
-        function UrlProcess(){
+        function urlProcess(){
             if (isset($_GET["url"]) ){
                 return explode("/", filter_var(trim($_GET["url"], "/")));
             }

@@ -1,7 +1,7 @@
 <?php 
     class Admin extends Controller {
         function index() {
-            $this->view('admin/layouts/layoutAdmin', ['folder'=>'dashboard', 'page'=>'dashboard']);
+            $this->view('admin/layouts/layoutAdmin', ['page'=>'dashboard/dashboard']);
         }
 
         // function Notification
@@ -39,11 +39,11 @@
         function listCategories() {
             $model = $this->model('CategoriesModels');
             $rows = $model->selectCategories();
-            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'list', 'rows'=>$rows]);
+            $this->view('admin/layouts/layoutAdmin', ['page'=>'categories/list', 'rows'=>$rows]);
         }
     
         function addCategory() {
-            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'add']);
+            $this->view('admin/layouts/layoutAdmin', ['page'=>'categories/add']);
             
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $this->processAddCategory();
@@ -83,12 +83,14 @@
             if (isset($id)) {
                 $row = $model->selectCategoryId($id);
             }
-            $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'update', 'row'=>$row]);
+            $this->view('admin/layouts/layoutAdmin', ['page'=>'categories/update', 'row'=>$row]);
         }
     
         function handleCategory() {
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $this->processUpdateCategory();
+            }else {
+                header("Location: ../Admin/ListCategories");
             }
         }
     
@@ -103,13 +105,13 @@
             if ($checkName == null || $checkId['category_name'] == $name) {
                 $query = $model->updateCategory($name, $user_id, $id);
                 $rows = $model->selectCategories();
-                $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'list', 'rows'=>$rows]);
+                $this->view('admin/layouts/layoutAdmin', ['page'=>'categories/list', 'rows'=>$rows]);
                 if ($query) {
                     $this->showSuccessMessage('Cập nhật thành công');
                 }
             } else {
                 $row = $model->selectCategoryId($id);
-                $this->view('admin/layouts/layoutAdmin', ['folder'=>'categories', 'page'=>'update', 'row'=>$row]);
+                $this->view('admin/layouts/layoutAdmin', ['page'=>'categories/update', 'row'=>$row]);
                 $this->showInfoMessage('Tên danh mục đã tồn tại');
             }
         }
@@ -129,16 +131,14 @@
             }
 
             $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'subcategories', 
-                    'page'=>'list',
+                    ['page'=>'subcategories/list',
                     'category_id'=>$category_id,
                     'rows'=>$rows]);
         }
 
         function addSubcat($category_id) {
             $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'subcategories', 
-                    'page'=>'add',
+                    ['page'=>'subcategories/add',
                     'category_id'=>$category_id]);
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $this->processAddSubcat($category_id);
@@ -182,8 +182,7 @@
                 $row = $model->selectSubcatId($subcat_id);
             }
             $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'subcategories', 
-                    'page'=>'update',
+                    ['page'=>'subcategories/update',
                     'category_id'=>$category_id,
                     'row'=>$row]);
         }
@@ -191,6 +190,8 @@
         function handleSubcat($category_id) {
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $this->processUpdateSubcat($category_id);
+            }else {
+                header("Location: ../Admin/Subcategories/$category_id");
             }
         }
 
@@ -210,8 +211,7 @@
                 $query = $model->updateSubcat($name, $targetFile, $user_id, $subcat_id, $image);
                 $rows = $model->selectSubcategories($category_id);
                 $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'subcategories', 
-                    'page'=>'list',
+                    ['page'=>'subcategories/list',
                     'category_id'=>$category_id,
                     'rows'=>$rows]);
                 
@@ -221,8 +221,7 @@
             }else {
                 $row = $model->selectSubcatId($subcat_id);
                 $this->view('admin/layouts/layoutAdmin',
-                    ['folder'=>'subcategories', 
-                    'page'=>'update',
+                    ['page'=>'subcategories/update',
                     'category_id'=>$category_id,
                     'row'=>$row]);
                 $this->showInfoMessage('Tên danh mục con đã tồn tại');
@@ -234,8 +233,7 @@
             $model = $this->model('ProductsModels');
             $rows = $model->selectProducts();
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'products', 
-                        'page'=>'list',
+                        ['page'=>'products/list',
                         'rows'=>$rows]);
         }
 
@@ -243,8 +241,7 @@
             $model2 = $this->model('CategoriesModels');
             $listCat = $model2->selectCategories();
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'products', 
-                        'page'=>'add',
+                        ['page'=>'products/add',
                         'list'=>$listCat]);
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $this->processAddProduct();
@@ -308,93 +305,81 @@
                 $listImage = $model->selectLibary($id);
             }
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'products', 
-                        'page'=>'update',
+                        ['page'=>'products/update',
                         'row'=>$row,
                         'listImage'=>$listImage,
                         'list'=>$listCat]);
         }
 
         function handleProduct() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processUpdateProduct();
+            }else {
+                header('Location: ../Admin/ListProducts');
+            }   
+        }
+
+        function processUpdateProduct() {
             $model = $this->model('ProductsModels');
-            $rows = $model->selectProducts();
-            $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'products', 
-                        'page'=>'list',
+            $model2 = $this->model('CategoriesModels');
+
+            $product_id = $_POST['product_id'];
+            $name = $_POST['product_name'];
+            $image = $_FILES['product_image']['name'];
+            $listImage = $_FILES['library_image']['name'];
+            $quantity = $_POST['product_quantity'];
+            $price = $_POST['initial_price'];
+            $discount = $_POST['discount'];
+            $category_id = $_POST['category_id'];
+            $subcat_id = $_POST['subcat_id'];
+            $desc = $_POST['description'];
+            $user_id = $_SESSION['user_id'];
+            $countPrice = $price - ($price * ($discount / 100));
+            $newPrice = $discount > 0 ? $countPrice : 0;
+            $targetDir = './public/img/products/';
+            $target_file = $targetDir . basename($image);
+
+            $checkId = $model->selectProductId($product_id);
+            $checkName = $model->selectProductName($name, $subcat_id);
+
+            if ($checkName == null || $checkId['product_name'] == $name) {
+                move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file);
+                $query = $model->updateProduct($name, $target_file, $desc, $quantity, $price, $discount, $newPrice, $category_id, $subcat_id, $user_id, $product_id, $image);
+                $rows = $model->selectProducts();
+                $this->view('admin/layouts/layoutAdmin',
+                        ['page'=>'products/list',
                         'rows'=>$rows]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $product_id = $_POST['product_id'];
-                    $name = $_POST['product_name'];
-                    $image = $_FILES['product_image']['name'];
-                    $listImage = $_FILES['library_image']['name'];
-                    $quantity = $_POST['product_quantity'];
-                    $price = $_POST['initial_price'];
-                    $discount = $_POST['discount'];
-                    $category_id = $_POST['category_id'];
-                    $subcat_id = $_POST['subcat_id'];
-                    $desc = $_POST['description'];
-                    $user_id = $_SESSION['user_id'];
-                    $countPrice = $price - ($price * ($discount / 100));
-                    $newPrice = $discount > 0 ? $countPrice : 0;
-                    $targetDir = './public/img/products/';
-                    $target_file = $targetDir . basename($image);
-                    move_uploaded_file($_FILES['product_image']['tmp_name'], $target_file);
-                    $query = $model->updateProduct($name, $target_file, $desc, $quantity, $price, $discount, $newPrice, $category_id, $subcat_id, $user_id, $product_id, $image);
-                    if ($query) {
-                        foreach ($listImage as $key => $value) {
-                            if (is_uploaded_file($_FILES['library_image']['tmp_name'][$key])) {
-                                $target_file2 = $targetDir . basename($value);
-                                move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
-                                $existingImage = $model->checkLibrary($product_id, $target_file2);
-                                var_dump($existingImage);
-                                if ($existingImage == null) {
-                                    $query2 = $model->insertLibrary($target_file2, $product_id);
-                                    if ($query2) {
-                                        echo "<script>
-                                                Swal.fire({
-                                                    title: 'Thành công!',
-                                                    text: 'Cập nhật thành công',
-                                                    icon: 'success',
-                                                    showConfirmButton: false,
-                                                    timer: 1000
-                                                });
-                                                
-                                            </script>";
-                                    }
-                                }else {
-                                    echo "<script>
-                                            Swal.fire({
-                                                title: 'Thành công!',
-                                                text: 'Cập nhật thành công',
-                                                icon: 'success',
-                                                showConfirmButton: false,
-                                                timer: 1000
-                                            });
-                                            setTimeout(function() {
-                                                window.location.href = './Admin/ListProducts';
-                                            },800);
-                                        </script>";
+                if ($query) {
+                    foreach ($listImage as $key => $value) {
+                        if (is_uploaded_file($_FILES['library_image']['tmp_name'][$key])) {
+                            $target_file2 = $targetDir . basename($value);
+                            move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
+                            $existingImage = $model->checkLibrary($product_id, $target_file2);
+                            if ($existingImage == null) {
+                                $query2 = $model->insertLibrary($target_file2, $product_id);
+                                if ($query2) {
+                                    $this->showSuccessMessage('Cập nhật sản phẩm thành công!');
                                 }
                             }else {
-                                echo "<script>
-                                        Swal.fire({
-                                            title: 'Thành công!',
-                                            text: 'Cập nhật thành công',
-                                            icon: 'success',
-                                            showConfirmButton: false,
-                                            timer: 1000
-                                        });
-                                        setTimeout(function() {
-                                                window.location.href = './Admin/ListProducts';
-                                        },800);
-                                    </script>";
+                                $this->showSuccessMessage('Cập nhật sản phẩm thành công!');
                             }
+                        }else {
+                            $this->showSuccessMessage('Cập nhật sản phẩm thành công!');
                         }
-                        
                     }
+                            
                 }
-            }   
+            }else {
+                $listCat = $model2->selectCategories();
+                $row = $model->selectProductId($product_id);
+                $listImage = $model->selectLibary($product_id);
+                $this->view('admin/layouts/layoutAdmin',
+                        ['page'=>'products/update',
+                        'row'=>$row,
+                        'listImage'=>$listImage,
+                        'list'=>$listCat]);
+                $this->showInfoMessage('Tên sản phẩm này đã tồn tại');
+            }
         }
 
         // -------------- libraries -----------------
@@ -402,8 +387,7 @@
             $model = $this->model('ProductsModels');
             $rows = $model->selectProducts();
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'libraryImages', 
-                        'page'=>'listProduct',
+                        ['page'=>'libraryImages/listProduct',
                         'rows'=>$rows]);
         }
 
@@ -413,8 +397,7 @@
                 $rows = $model->selectLibary($id);
             }
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'libraryImages', 
-                        'page'=>'list',
+                        ['page'=>'libraryImages/list',
                         'product_id'=>$id,
                         'rows'=>$rows]);
         }
@@ -431,30 +414,24 @@
         }
 
         function addImage($id) {
-            $model = $this->model('ProductsModels');
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'libraryImages', 
-                        'page'=>'add',
+                        ['page'=>'libraryImages/add',
                         'product_id'=>$id]);
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if (isset($_POST['submit'])) {
-                    $targetDir = "./public/img/products/";
-                    $listImage = $_FILES['library_image']['name'];
-                    foreach ($listImage as $key => $value) {
-                        $target_file2 = $targetDir . basename($value);
-                        move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
-                        $query2 = $model->insertLibrary($target_file2, $id);
-                        if ($query2) {
-                            echo '<script>
-                                        Swal.fire({
-                                            title: "Thành công!",
-                                            text: "Thêm ảnh thành công!",
-                                            icon: "success",
-                                            timer: 1000
-                                        });
-                                    </script>';
-                        }
-                    }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+                $this->processAddImage($id);
+            }
+        }
+
+        function processAddImage($id) {
+            $model = $this->model('ProductsModels');
+            $targetDir = "./public/img/products/";
+            $listImage = $_FILES['library_image']['name'];
+            foreach ($listImage as $key => $value) {
+                $target_file2 = $targetDir . basename($value);
+                move_uploaded_file($_FILES['library_image']['tmp_name'][$key], $target_file2);
+                $query2 = $model->insertLibrary($target_file2, $id);
+                if ($query2) {
+                    $this->showSuccessMessage('Thêm ảnh thành công');
                 }
             }
         }
@@ -463,62 +440,72 @@
             $model = $this->model('ProductsModels');
             $row = $model->selecetLibraryId($id);
             $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'libraryImages', 
-                        'page'=>'update',
+                        ['page'=>'libraryImages/update',
                         'product_id'=>$product_id,
                         'row'=>$row]);
         }
 
-        function handleImage($product_id=null) {
-            $model = $this->model('ProductsModels');
-            if (isset($product_id)) {
-                $rows = $model->selectLibary($product_id);
+        function handleImage($product_id) {
+            if ($_SERVER['REQUEST_METHOD'] = 'POST' && isset($_POST['submit'])) {
+                $this->processUpdateImage($product_id);
             }
-            $this->view('admin/layouts/layoutAdmin',
-                        ['folder'=>'libraryImages', 
-                        'page'=>'list',
+        }
+
+        function processUpdateImage($product_id) {
+            $model = $this->model('ProductsModels');
+            $image = $_FILES['image']['name'];
+            $id = $_POST['image_id'];
+
+            if ($image != '') {
+                $targetDir = "./public/img/products/";
+                $targetFile = $targetDir . basename($image);
+                move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
+                $query = $model->updateImage($targetFile, $id);
+                $rows = $model->selectLibary($product_id);
+                $this->view('admin/layouts/layoutAdmin',
+                        ['page'=>'libraryImages/list',
                         'product_id'=>$product_id,
                         'rows'=>$rows]);
-            if ($_SERVER['REQUEST_METHOD'] = 'POST') {
-                if (isset($_POST['submit'])) {
-                    $image = $_FILES['image']['name'];
-                    $id = $_POST['image_id'];
+                if ($query) {
+                    $this->showSuccessMessage('Cập nhật ảnh thành công');
+                }
+            }else {
+                $rows = $model->selectLibary($product_id);
+                $this->view('admin/layouts/layoutAdmin',
+                        ['page'=>'libraryImages/list',
+                        'product_id'=>$product_id,
+                        'rows'=>$rows]);
+                $this->showSuccessMessage('Cập nhật ảnh thành công');
+            }
+        }
 
-                    if ($image != '') {
-                        $targetDir = "./public/img/products/";
-                        $targetFile = $targetDir . basename($image);
-                        move_uploaded_file($_FILES['image']['tmp_name'], $targetFile);
-                        $query = $model->updateImage($targetFile, $id);
-                        if ($query) {
-                            echo "<script>
-                                    Swal.fire({
-                                        title: 'Thành công!',
-                                        text: 'Cập nhật thành công',
-                                        icon: 'success',
-                                        showConfirmButton: false,
-                                        timer: 1000
-                                    });
-                                    setTimeout(function() {
-                                        window.location.href = './Admin/HandleImage/$product_id';
-                                    },800);
-                                </script>";
-                        }
-                    }else {
-                        echo "<script>
-                                Swal.fire({
-                                    title: 'Thành công!',
-                                    text: 'Cập nhật thành công',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    timer: 1000
-                                });
-                                setTimeout(function() {
-                                    window.location.href = './Admin/HandleImage/$product_id';
-                                },800);
-                            </script>";
-                    }
+        function listUsers() {
+            $model = $this->model('UserModels');
+            $rows = $model->selectUsers();
+            $this->view('admin/layouts/layoutAdmin',
+                        ['page'=>'users/list', 
+                        'rows'=>$rows]);
+        }
+
+        function updateRole() {
+            $model = $this->model('UserModels');
+            if (isset($_POST['id'], $_POST['role'])) {
+                $query = $model->updateRole($_POST['role'],$_POST['id']);
+                if ($query) {
+                    echo $_POST['role'];
                 }
             }
         }
+
+        function updateStatus() {
+            $model = $this->model('UserModels');
+            if (isset($_POST['id'], $_POST['status'])) {
+                $query = $model->updateStatus($_POST['status'],$_POST['id']);
+                if ($query) {
+                    echo $_POST['status'];
+                }
+            }
+        }
+
     }
 ?>

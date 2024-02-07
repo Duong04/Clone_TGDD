@@ -6,7 +6,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="./Admin/AddProduct" class="m-0 font-weight-bold btn btn-success">Thêm mới</a>
+            <a href="./Admin/AddProduct" class="m-0 font-weight-bold btn yellow text-white">Thêm mới</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -64,7 +64,7 @@
                             <td><?=$row['subcat_name']?></td>
                             <td><?=$row['user_name']?></td>
                             <td style="width: 120px;">
-                                <a href="./Admin/UpdateProduct/<?=$row['product_id']?>" class="btn btn-warning">Sửa</a>
+                                <a href="./Admin/UpdateProduct/<?=$row['product_id']?>" class="btn btn-success">Sửa</a>
                                 <a href="./Admin/DeleteProduct" id="delete" class="btn btn-danger" onclick="deleteC(event,<?=$row['product_id']?>)">Xóa</a>
                             </td>
                         </tr>

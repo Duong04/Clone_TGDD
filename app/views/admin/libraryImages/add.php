@@ -8,7 +8,7 @@
         <form action="" method="POST" class="" enctype="multipart/form-data">
             <div class="col-md-6 mb-3">
                 <label for="library_image" class="form-label">Thư viện ảnh</label>
-                <input name="library_image[]" type="file" class="form-control" id="library_image" placeholder="Thư viện ảnh" multiple>
+                <input required name="library_image[]" type="file" class="form-control" id="library_image" placeholder="Thư viện ảnh" multiple>
             </div>
             <div class="col-md-4 pt-3">
                 <button class="form-control btn btn-primary col-md-3" name="submit">Thêm</button>

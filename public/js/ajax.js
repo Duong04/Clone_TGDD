@@ -44,3 +44,49 @@ $(document).ready(function() {
         });
     });
 });
+
+function updateRole(role, id) {
+    console.log(role, id)
+    $.ajax({
+        url: "./Admin/updateRole",
+        method: "POST",
+        data: { 
+                role: role,
+                id: id
+            },
+        success: function(data) {
+            const roleCell = document.querySelector('td[data-user-id="' + id + '"][data-column="role"]');
+            roleCell.textContent = data;
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Cập nhật thành công!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    });
+}
+
+function updateStatus(status, id) {
+    $.ajax({
+        url: "./Admin/updateStatus",
+        method: "POST",
+        data: {
+            status: status,
+            id: id,
+        },
+        success: function(data) {
+            const statusCell = document.querySelector('td[data-user-id="' + id + '"][data-column="status"]');
+            statusCell.textContent = data;
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Cập nhật thành công!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    });
+}
+

@@ -37,13 +37,10 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <style>
         .ck-editor__editable {
             min-height: 300px;
-        }
-
-        th {
-            color: #000 !important;
         }
     </style>
 </head>
@@ -68,7 +65,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <?php require_once './app/views/admin/'.$datas['folder'].'/'.$datas['page'].'.php' ?>
+                <?php require_once './app/views/admin/'.$datas['page'].'.php' ?>
                 <!-- /.container-fluid -->
 
             </div>
@@ -108,9 +105,10 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="./public/js/ajax.js"></script>
-
+    <script src="./public/js/admin.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="./public/library/admin-boostrap/vendor/jquery/jquery.min.js"></script>
     <script src="./public/library/admin-boostrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

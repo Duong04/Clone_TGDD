@@ -90,9 +90,9 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+        <a class="nav-link" href="./Admin/ListUsers">
+            <i class="fa-solid fa-user"></i>
+            <span>Quản lý tài khoản</span></a>
     </li>
 
     <!-- Nav Item - Tables -->

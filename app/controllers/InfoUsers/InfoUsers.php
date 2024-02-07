@@ -1,6 +1,10 @@
 <?php 
     class InfoUsers extends Controller {
         function index() {
+            header('Location: ./InfoUsers/Profile');
+        }
+
+        function profile() {
             $model = $this->model('UserModels');
             if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
@@ -33,13 +37,12 @@
                                         window.location.href = './InfoUsers';
                                     },800);
                                 </script>";
-                        }else {
-                            echo 'Lỗi';
                         }
                     }
                 }
             }else {
-                header('Location: ./UserAuthentication');
+                header('Location: ../UserAuthentication/Login');
+                exit();
             }
         }
 
@@ -48,7 +51,7 @@
             unset($_SESSION['role']);
             unset($_SESSION['user_id']);
             unset($_SESSION['status']);
-            header('Location: ../UserAuthentication');
+            header('Location: ../UserAuthentication/Login');
             exit();
         }
     }

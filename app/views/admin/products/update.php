@@ -49,7 +49,7 @@
             <div class="col-md-6 mb-3">
                 <label for="subcat_id">Danh mục con</label>
                 <select required name="subcat_id" id="subcat_id" class="form-control">
-                    <option value="0">Danh mục con</option>
+                    <option value="<?=$datas['row']['subcat_id']?>"><?=$datas['row']['subcat_name']?></option>
                 </select>
             </div>
             <div class="col-md-12">
@@ -67,4 +67,4 @@
 
 </div>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
-<script src="./public/js/admin.js"></script>
+<script src="./public/js/productAdmin.js"></script>

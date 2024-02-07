@@ -71,7 +71,7 @@
                                 <span>Google</span>
                             </div>
                         </div>
-                        <div class="link-login">Bạn đã có tài khoản? <a href="./UserAuthentication">Đăng nhập</a></div>
+                        <div class="link-login">Bạn đã có tài khoản? <a href="./UserAuthentication/Login">Đăng nhập</a></div>
                     </form>
                 </div>
             </div>

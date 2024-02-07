@@ -12,7 +12,10 @@
         }
 
         function selectProductId($id) {
-            $sql = "SELECT * FROM products WHERE product_id = ?";
+            $sql = "SELECT * FROM products P 
+                    INNER JOIN subcategories S 
+                    ON P.subcat_id = S.subcat_id  
+                    WHERE product_id = ?";
             return $this->selectOne($sql, [$id]);
         }
 

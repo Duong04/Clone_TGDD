@@ -1,5 +1,9 @@
 <?php 
     class UserModels extends Database {
+        function selectUsers() {
+            $sql = "SELECT * FROM users";
+            return $this->selectAll($sql);
+        }
         function inserUsers($userName, $email, $password, $token) {
             $sql = "INSERT INTO users (user_name, email, password, token, role, status, create_date, user_image) values(?, ?, ?, ?, 'Khách Hàng', 'Chưa kích hoạt', NOW(), './public/img/users/default-image.png')";
             return $this->cud($sql, [$userName, $email, $password, $token]);
@@ -43,6 +47,16 @@
                 $sql = "UPDATE users SET user_name = ?, email = ?, phone = ?, address = ?, user_image = ? WHERE user_id = ?";
                 return $this->cud($sql, [$userName, $email, $phone, $address, $target_file, $user_id]);
             }
+        }
+
+        function updateRole($role, $id) {
+            $sql = "UPDATE users SET role = ? WHERE user_id = ?";
+            return $this->cud($sql, [$role, $id]);
+        }
+
+        function updateStatus($status, $id) {
+            $sql = "UPDATE users SET status = ? WHERE user_id = ?";
+            return $this->cud($sql, [$status, $id]);
         }
     }
 ?>

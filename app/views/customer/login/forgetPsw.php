@@ -120,7 +120,7 @@
                     <a href="./UserAuthentication"><i class="fa-solid fa-arrow-right fa-rotate-180"></i></a>
                     <h3>Khôi phục mật khẩu</h3>
                     <form action="" method="POST">
-                        <input required name="email" type="email" placeholder="Nhập email của bạn">
+                        <input autofocus required name="email" type="email" placeholder="Nhập email của bạn">
                         <button name="submit">Gửi</button>
                     </form>
                 </div>

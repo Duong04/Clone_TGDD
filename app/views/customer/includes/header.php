@@ -23,7 +23,7 @@
                     </form>
                 </div>
                 <div class="account">
-                    <a href="<?=isset($_SESSION['user_id']) ? './InfoUsers' : './UserAuthentication' ?>">Tài khoản & đơn hàng</a>
+                    <a href="<?=isset($_SESSION['user_id']) ? './InfoUsers/Profile' : './UserAuthentication/Login' ?>">Tài khoản & đơn hàng</a>
                 </div>
                 <div class="cart">
                     <a href="">
