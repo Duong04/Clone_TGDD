@@ -255,7 +255,7 @@
             $listImage = $_FILES['library_image']['name'];
             $quantity = $_POST['product_quantity'];
             $price = $_POST['initial_price'];
-            $discount = $_POST['discount'];
+            $discount = !empty($_POST['discount']) ? $_POST['discount'] : 0;
             $category_id = $_POST['category_id'];
             $subcat_id = $_POST['subcat_id'];
             $desc = $_POST['description'];
@@ -329,7 +329,7 @@
             $listImage = $_FILES['library_image']['name'];
             $quantity = $_POST['product_quantity'];
             $price = $_POST['initial_price'];
-            $discount = $_POST['discount'];
+            $discount = !empty($_POST['discount']) ? $_POST['discount'] : 0;
             $category_id = $_POST['category_id'];
             $subcat_id = $_POST['subcat_id'];
             $desc = $_POST['description'];

@@ -25,18 +25,18 @@
         }
 
         function insertProduct($name, $image, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id) {
-            $sql = "INSERT INTO products (product_name, product_image, description, product_quantity, initial_price, discount, new_price, category_id, subcat_id, user_id) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO products (product_name, product_image, description, product_quantity, initial_price, discount, new_price, category_id, subcat_id, user_id,create_date) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
             $this->insertGetId($sql, [$name, $image, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id], $lastInsertId);
             return $lastInsertId;
         }
 
         function updateProduct($name, $image, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id, $product_id,$checkImage) {
             if ($checkImage != '') {
-                $sql = "UPDATE products SET product_name = ?, product_image = ?, description = ?, product_quantity = ?, initial_price = ?, discount = ?, new_price = ?, category_id = ?, subcat_id = ?, user_id = ? WHERE product_id = ?";
+                $sql = "UPDATE products SET product_name = ?, product_image = ?, description = ?, product_quantity = ?, initial_price = ?, discount = ?, new_price = ?, category_id = ?, subcat_id = ?, user_id = ?, create_date = NOW() WHERE product_id = ?";
                 return $this->cud($sql, [$name, $image, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id, $product_id]);
             }else {
-                $sql = "UPDATE products SET product_name = ?, description = ?, product_quantity = ?, initial_price = ?, discount = ?, new_price = ?, category_id = ?, subcat_id = ?, user_id = ? WHERE product_id = ?";
+                $sql = "UPDATE products SET product_name = ?, description = ?, product_quantity = ?, initial_price = ?, discount = ?, new_price = ?, category_id = ?, subcat_id = ?, user_id = ?, create_date = NOW() WHERE product_id = ?";
                 return $this->cud($sql, [$name, $desc, $quantity, $price, $discount, $new_price, $category_id, $subcat_id, $user_id, $product_id]);
             }
         }

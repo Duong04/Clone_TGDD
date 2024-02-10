@@ -9,7 +9,7 @@
             <div class="col-md-6 mb-3">
                 <label for="library_image" class="form-label">Ảnh sản phẩm</label>
                 <input name="image" type="file" class="form-control" id="library_image" placeholder="Ảnh sản phẩm">
-                <img class="my-2" style="width:60px; height:65px;" src="<?=$datas['row']['image']?>" alt="">
+                <img class="my-2" style="width:80px;" src="<?=$datas['row']['image']?>" alt="">
             </div>
             <div class="col-md-4 pt-3">
                 <input type="hidden" name="image_id" value="<?=$datas['row']['image_id']?>">

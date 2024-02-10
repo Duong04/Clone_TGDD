@@ -1,6 +1,6 @@
 <?php 
     class Database {
-        private $serverName = 'mysql:host=localhost;dbname=demo;charset=utf8';
+        private $serverName = 'mysql:host=localhost;dbname=ql_dsugar;charset=utf8';
         private $userName = 'root';
         private $password = '';
         private $connection;

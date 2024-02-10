@@ -56,11 +56,11 @@
                             <td><?=$row['product_name']?></td>
                             <td><img style="width: 80px; height: 80px;" src="<?=$row['product_image']?>" alt=""></td>
                             <td><?=$initial_priceF?><sup>₫</sup></td>
-                            <td><?=$row['discount']?></td>
+                            <td><?=$row['discount']?>%</td>
                             <td><?=$priceF?><sup>₫</sup></td>
                             <td><?=$row['product_quantity']?></td>
                             <td><?=$row['view']?></td>
-                            <td><?=$row['category_name']?></td>
+                            <td style="width:100px;"><?=$row['category_name']?></td>
                             <td><?=$row['subcat_name']?></td>
                             <td><?=$row['user_name']?></td>
                             <td style="width: 120px;">

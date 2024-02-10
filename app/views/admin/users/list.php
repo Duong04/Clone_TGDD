@@ -8,8 +8,6 @@
         <div class="card-header py-3">
             <a href="./Admin/AddCategory" class="m-0 font-weight-bold btn yellow text-white">Thêm mới</a>
         </div>
-        <h1><?=$root_url?></h1>
-        <h1><?=$okok?></h1>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

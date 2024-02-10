@@ -1,8 +1,8 @@
-ClassicEditor
-.create( document.querySelector( '#description' ) )
-.catch( error => {
-    console.error( error );
-} );
+$('#description').summernote({
+    placeholder: 'Mô tả sản phẩm',
+    tabsize: 2,
+    height: 300
+  });
 
 function validateDiscount(input) {
     if (input.value < 0) {

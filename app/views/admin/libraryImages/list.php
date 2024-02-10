@@ -7,6 +7,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="./Admin/AddImage/<?=$datas['product_id']?>" class="m-0 font-weight-bold btn yellow text-white">Thêm mới</a>
+            <a href="./Admin/ListImage" class="m-0 font-weight-bold btn btn-outline-success"><i class="fa-solid fa-arrow-rotate-left"></i> Quay về</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -32,7 +33,7 @@
                         <tr data-id="<?=$row['image_id']?>">
                             <th style="width:35px;"><?=$i?></th>
                             <td><?=$row['product_name']?></td>
-                            <td><img style="width: 80px; height: 80px;" src="<?=$row['image']?>" alt=""></td>
+                            <td><img style="width: 130px;" src="<?=$row['image']?>" alt=""></td>
                             <td style="width: 120px;">
                                 <a href="./Admin/UpdateImage/<?=$row['image_id']?>/<?=$row['product_id']?>" class="btn btn-success">Sửa</a>
                                 <a href="./Admin/DeleteImage" id="delete" class="btn btn-danger" onclick="deleteC(event,<?=$row['image_id']?>)">Xóa</a>

@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="discount" class="form-label">% giảm giá</label>
-                <input oninput="validateDiscount(this)" required name="discount" type="number" class="form-control" id="discount" placeholder="% giảm giá">
+                <input oninput="validateDiscount(this)" name="discount" type="number" class="form-control" id="discount" placeholder="% giảm giá">
             </div>
             <div class="col-md-6 mb-3">
                 <label for="category_id">Danh mục sản phẩm</label>
@@ -58,5 +58,5 @@
     </div>
 
 </div>
-<script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <script src="./public/js/productAdmin.js"></script>

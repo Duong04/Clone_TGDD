@@ -5,6 +5,11 @@ thead th {
 .aside {
     background-image: none;
     background-color: #2f353a !important;
+    position: sticky !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
 }
 
 .page-item.active .page-link,
