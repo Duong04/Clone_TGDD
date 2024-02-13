@@ -54,7 +54,7 @@
                         <tr data-id="<?=$row['product_id']?>">
                             <th style="width:35px;"><?=$stt?></th>
                             <td><?=$row['product_name']?></td>
-                            <td><img style="width: 80px; height: 80px;" src="<?=$row['product_image']?>" alt=""></td>
+                            <td><img style="width: 80px;" src="<?=$row['product_image']?>" alt=""></td>
                             <td><?=$initial_priceF?><sup>₫</sup></td>
                             <td><?=$row['discount']?>%</td>
                             <td><?=$priceF?><sup>₫</sup></td>

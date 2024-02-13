@@ -47,10 +47,10 @@
         }
 
         function logout() {
-            unset($_SESSION['userName']);
-            unset($_SESSION['role']);
-            unset($_SESSION['user_id']);
-            unset($_SESSION['status']);
+            session_unset();
+
+            session_destroy();
+            
             header('Location: ../UserAuthentication/Login');
             exit();
         }
