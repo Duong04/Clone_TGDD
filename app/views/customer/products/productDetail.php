@@ -33,11 +33,13 @@
         <article>
             <div class="header-title">
                 <ul class="breadcrumb">
-                    <li><a href="">Điện thoại</a></li>
+                    <li><a href="./Products/Categories/<?=$datas['productDetail']['category_id']?>"><?=$datas['productDetail']['category_name']?></a></li>
                     <span><i class="fa-solid fa-chevron-down fa-rotate-270"></i></span>
-                    <li><a href="">Samsung</a></li>
+                    <li><a href="./Products/Categories/<?=$datas['productDetail']['category_id']?>/<?=$datas['productDetail']['subcat_id']?>"><?=$datas['productDetail']['subcat_name']?></a></li>
+                    <span><i class="fa-solid fa-chevron-down fa-rotate-270"></i></span>
+                    <li><?=$datas['productDetail']['product_name']?></li>
                 </ul>
-                <h3>Điện thoại iPhone 15 Plus 128GB</h3>
+                <h3><?=$datas['productDetail']['category_name'].' '.$datas['productDetail']['product_name']?></h3>
             </div>
             <hr>
             <div class="content-far">
@@ -46,24 +48,11 @@
                         <div id="main-carousel" class="splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
+                                    <?php foreach ($datas['listImages'] as $row) { ?>
+                                        <li class="splide__slide">
+                                            <img src="<?=$row['image']?>" alt="">
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -71,24 +60,11 @@
                         <div id="thumbnail-carousel" class="splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
                             <div class="splide__track">
                                 <ul class="splide__list">
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-1-4.jpg" alt="">
-                                    </li>
-                                    <li class="splide__slide">
-                                        <img src="./public/img/products/iphone-15-plus-128gb-xanh-la-2.jpg" alt="">
-                                    </li>
+                                    <?php foreach ($datas['listImages'] as $row) { ?>
+                                        <li class="splide__slide">
+                                            <img src="<?=$row['image']?>" alt="">
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -110,17 +86,27 @@
                     <div class="description">
                         <h3>Thông tin sản phẩm</h3>
                         <div class="description-content">
-                            <img src="./public/img/banner/iphone-15-pro-131023-034959.jpg" alt="">
+                            <?=$datas['productDetail']['description']?>
                         </div>
                         <div class="open-desc"><span>Xem thêm &nbsp;<i class="fa-solid fa-caret-down fa-rotate-270"></i></span></div>
                     </div>
                 </div>
                 <div class="content-right">
+                    <?php 
+                        $newPriceF = number_format($datas['productDetail']['new_price'], 0, ',', '.');
+                        $initialPriceF = number_format($datas['productDetail']['initial_price'], 0, ',', '.');
+                        if ($datas['productDetail']['discount'] > 0) {
+                    ?>
                     <div class="box-price">
-                        <span>25.490.000<sup>₫</sup></span>
-                        <del>25.490.000<sup>₫</sup></del>
-                        <span>5%</span>
+                        <span><?=$newPriceF?><sup>₫</sup></span>
+                        <del><?=$initialPriceF?><sup>₫</sup></del>
+                        <span><?=$datas['productDetail']['discount']?>%</span>
                     </div>
+                    <?php }else { ?>
+                    <div class="box-price">
+                        <span><?=$newPriceF?><sup>₫</sup></span>
+                    </div>
+                    <?php } ?>
                     <div class="box-gift">
                         <i class="fa-solid fa-gift"></i>
                         <p><strong>+25.490</strong> điểm tích lũy Quà Tặng VIP</p>
@@ -212,19 +198,29 @@
             <div class="same-products">
                 <h1>Các sản phẩm tương tự</h1>
                 <div class="same-product-child products">
+                    <?php 
+                    foreach($datas['similarProduct'] as $row) {
+                        $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
+                        $newPriceF = number_format($row['new_price'], 0, ',', '.');
+                        $numRand = rand(11, 399);
+                    ?>
                     <div class="product-item">
                         <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
+                            <img src="<?=$row['product_image']?>" alt="">
+                            <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
                                 <img src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
+                            <?php 
+                            if ($row['discount'] > 0) {
+                            ?>
                             <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
+                                <del><?=$initialPriceF?><sup>₫</sup></del>
+                                <span>-<?=$row['discount']?>%</span>
                             </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
+                            <?php } ?>
+                            <div class="price"><?=$newPriceF?><sup>₫</sup></div>
                             <div class="evaluate">
                                 <div class="star">
                                     <i class="fa-solid fa-star"></i>
@@ -233,153 +229,39 @@
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-regular fa-star"></i>
                                 </div>
-                                <p>100</p>
+                                <p><?=$numRand?></p>
                             </div>
                         </a>
                     </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="other-products">
                 <h1>Các sản phẩm khác</h1>
                 <div class="same-product-child products">
+                    <?php 
+                    foreach($datas['otherProduct'] as $row) {
+                        $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
+                        $newPriceF = number_format($row['new_price'], 0, ',', '.');
+                        $numRand = rand(11, 399);
+                    ?>
                     <div class="product-item">
                         <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
+                            <img src="<?=$row['product_image']?>" alt="">
+                            <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
                                 <img src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
+                            <?php 
+                            if ($row['discount'] > 0) {
+                            ?>
                             <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
+                                <del><?=$initialPriceF?><sup>₫</sup></del>
+                                <span>-<?=$row['discount']?>%</span>
                             </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
+                            <?php } ?>
+                            <div class="price"><?=$newPriceF?><sup>₫</sup></div>
                             <div class="evaluate">
                                 <div class="star">
                                     <i class="fa-solid fa-star"></i>
@@ -388,142 +270,18 @@
                                     <i class="fa-solid fa-star"></i>
                                     <i class="fa-regular fa-star"></i>
                                 </div>
-                                <p>100</p>
+                                <p><?=$numRand?></p>
                             </div>
                         </a>
                     </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>iPhone 15 Plus 128GB</h4>
-                            <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="old-price">
-                                <del>8.990.000<sup>₫</sup></del>
-                                <span>-30%</span>
-                            </div>
-                            <div class="price">7.988.000<sup>₫</sup></div>
-                            <div class="evaluate">
-                                <div class="star">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-regular fa-star"></i>
-                                </div>
-                                <p>100</p>
-                            </div>
-                        </a>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </article>
         <div class="view-description">
             <div class="description-all">
                 <div class="description-child">
-                    jfhaf
+                    <?=$datas['productDetail']['description']?>
                 </div>
             </div>
             <div class="btn-close">

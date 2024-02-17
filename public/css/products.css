@@ -97,7 +97,7 @@ article {
 }
 
 .product-item {
-    height: 430px;
+    height: 450px;
     border: 1px solid #e0e0e0;
 }
 
@@ -112,6 +112,12 @@ article {
     width: 90%;
     margin: auto;
     padding-top: 30px;
+}
+
+.product-img {
+    display: flex;
+    align-items: center;
+    height: 200px;
 }
 
 .product-item img {
@@ -174,6 +180,6 @@ article {
     color: var(--blue-color);
 }
 
-.product-item a:hover>img {
+.product-item a:hover .product-img>img {
     transform: translateY(-10px);
 }

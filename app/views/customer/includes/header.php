@@ -42,12 +42,11 @@
         </div>
         <menu>
             <ul>
-                <li><a href=""><i class="fa-solid fa-tablet-screen-button"></i> Điện thoại</a></li>
-                <li><a href=""><i class="fa-solid fa-laptop"></i> Laptop</a></li>
-                <li><a href=""><i class="fa-solid fa-tablet"></i> Tablet</a></li>
-                <li><a href=""><i class="fa-solid fa-headphones"></i> Phụ kiện</a></li>
-                <li><a href=""><i class="fa-solid fa-s"></i> Smartwatch</a></li>
-                <li><a href=""><i class="fa-solid fa-c"></i> Đồng hồ</a></li>
+                <?php 
+                    foreach ($datas['listCategories'] as $row) {
+                ?>
+                    <li><a href="./Products/Categories/<?=$row['category_id']?>"><?=$row['category_name']?></a></li>
+                <?php } ?>
             </ul>
         </menu>
         <img class="nav-img-right" src="./public/img/logo/header-phai-tgdd-248x78.png" alt="">

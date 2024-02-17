@@ -87,7 +87,7 @@ hr {
 }
 
 #thumbnail-carousel .splide__slide {
-    height: 100px !important;
+    height: 85px !important;
 }
 
 .splide__track--nav>.splide__list>.splide__slide {
@@ -544,7 +544,7 @@ hr {
 .description-child{
     width: 70%;
     margin: auto;
-    padding: 100px 0;
+    padding: 40px 0 100px;
     line-height: 25px;
 }
 

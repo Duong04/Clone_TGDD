@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,72 +83,25 @@
                     <div class="countdown" onload="showTime()"></div>
                 </div>
                 <div class="products product-sale">
+                    <?php 
+                        foreach ($datas['listProductDiscountest'] as $row) {
+                            $newPriceF = number_format($row['new_price'], 0, ',', '.');
+                            $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
+                    ?>
                     <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
+                        <a href="./Products/ProductDetail/<?=$row['product_id']?>">
+                            <div class="product-img">
+                                <img src="<?=$row['product_image']?>" alt="">
+                            </div>
+                            <h4><?=$row['product_name']?></h4>
+                            <div class="price"><?=$newPriceF?><sup>₫</sup></div>
                             <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
+                                <del><?=$initialPriceF?><sup>₫</sup></del>
+                                <span>-<?=$row['discount']?>%</span>
                             </div>
                         </a>
                     </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
-                            <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
-                            <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
-                            <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
-                            <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="product-item">
-                        <a href="">
-                            <img src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>OPPO Reno8 T</h4>
-                            <div class="price">7.700.700<sup>₫</sup></div>
-                            <div class="old-price">
-                                <del>6.700.000<sup>₫</sup></del>
-                                <span>40%</span>
-                            </div>
-                        </a>
-                    </div>
+                    <?php } ?>
                 </div>
                 <img src="./public/img/icon/Decor-frame-1-1200x56-1.png" alt="">
             </section>
@@ -159,102 +111,30 @@
                     <a href=""><img src="./public/img/banner-title/Group-232963-1200x120.webp" alt=""></a>
                 </div>
                 <div class="products product-accessory">
+                    <?php 
+                        foreach($datas['listProductClockDicount'] as $row) {
+                            $newPriceF = number_format($row['new_price'], 0, ',', '.');
+                            $numRand = rand(11, 399);
+                    ?>
                     <div class="product-item-2">
-                        <a href="">
+                        <a href="./Products/ProductDetail/<?=$row['product_id']?>">
                             <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
+                            <div class="product-img">
+                                <img class="img-hv" src="<?=$row['product_image']?>" alt="">
+                            </div>
+                            <h4><?=$row['product_name']?></h4>
                             <div class="onl">
                                 <img src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
                             <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
+                                <span><?=$newPriceF?><sup>₫</sup></span>
+                                <span>-<?=$row['discount']?>%</span>
                             </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
+                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(<?=$numRand?>)</div>
                         </a>
                     </div>
-                    <div class="product-item-2">
-                        <a href="">
-                            <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-item-2">
-                        <a href="">
-                            <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-item-2">
-                        <a href="">
-                            <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-item-2">
-                        <a href="">
-                            <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-item-2">
-                        <a href="">
-                            <img src="./public/img/bgr/Frame-knockout-desktop-226x500.webp" alt="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
+                    <?php } ?>
                 </div>
                 <img src="./public/img/icon/Decor-frame-1-1200x56-1.png" alt="">
             </section>
@@ -269,96 +149,32 @@
                     <a href=""><img src="./public/img/hp/tuan-le-hp-desk-6-380x200.webp" alt=""></a>
                 </div>
                 <div class="products product-hp">
+                    <?php 
+                        foreach($datas['listProductHp'] as $row) {
+                            $price = $row['discount'] > 0 ? $row['new_price'] : $row['initial_price'];
+                            $priceF = number_format($price, 0, ',', '.');
+                            $numRand = rand(11, 399);
+                    ?>
                     <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
+                        <a href="./Products/ProductDetail/<?=$row['product_id']?>">
+                            <div class="product-img">
+                                <img class="img-hv" src="<?=$row['product_image']?>" alt="">
+                            </div>
+                            <h4><?=$row['product_name']?></h4>
                             <div class="onl">
                                 <img src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
                             <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
+                                <span><?=$priceF?><sup>₫</sup></span>
+                                <?php if ($row['discount'] > 0) { ?>
+                                    <span>-<?=$row['discount']?>%</span>
+                                <?php } ?>
                             </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
+                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(<?=$numRand?>)</div>
                         </a>
                     </div>
-                    <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
-                    <div class="product-hp-item">
-                        <a href="">
-                            <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                            <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                            <div class="onl">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
-                                <span>Online giá rẻ quá</span>
-                            </div>
-                            <div class="price-2">
-                                <span>7.000.000<sup>₫</sup></span>
-                                <span>15%</span>
-                            </div>
-                            <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                        </a>
-                    </div>
+                    <?php } ?>
                 </div>
             </section>
             <!-- section 7 -->
@@ -474,308 +290,58 @@
                 </div>
                 <div class="tab-product">
                     <div class="tab-product-child active">
+                        <?php 
+                            foreach ($datas['listProductRand'] as $row) {
+                                $priceF = number_format($row['new_price'], 0, ',', '.');
+                                $numRand = rand(11, 399);
+                        ?>
                         <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
+                            <a href="./Products/ProductDetail/<?=$row['product_id']?>">
+                                <div class="product-img">
+                                    <img class="img-hv" src="<?=$row['product_image']?>" alt="">
+                                </div>
+                                <h4><?=$row['product_name']?></h4>
                                 <div class="onl">
                                     <img src="./public/img/icon/tai_xuong.png" alt="">
                                     <span>Online giá rẻ quá</span>
                                 </div>
                                 <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
+                                    <span><?=$priceF?><sup>₫</sup></span>
+                                    <?php if ($row['discount'] > 0) { ?>
+                                        <span>-<?=$row['discount']?>%</span>
+                                    <?php } ?>
                                 </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
+                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(<?=$numRand?>)</div>
                             </a>
                         </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/oppo-reno8-t-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
+                        <?php } ?>
                     </div>
                     <div class="tab-product-child">
+                        <?php 
+                            foreach ($datas['listLaptopGaming'] as $row) {
+                                $priceF = number_format($row['new_price'], 0, ',', '.');
+                                $numRand = rand(11, 399);
+                        ?>
                         <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
+                            <a href="./Products/ProductDetail/<?=$row['product_id']?>">
+                                <div class="product-img">
+                                    <img class="img-hv" src="<?=$row['product_image']?>" alt="">
+                                </div>
+                                <h4><?=$row['product_name']?></h4>
                                 <div class="onl">
                                     <img src="./public/img/icon/tai_xuong.png" alt="">
                                     <span>Online giá rẻ quá</span>
                                 </div>
                                 <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
+                                    <span><?=$priceF?><sup>₫</sup></span>
+                                    <?php if ($row['discount'] > 0) { ?>
+                                        <span>-<?=$row['discount']?>%</span>
+                                    <?php } ?>
                                 </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
+                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(<?=$numRand?>)</div>
                             </a>
                         </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/msi-gaming-gf63-thin-11uc-i7-1228vn-thumb-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
+                        <?php } ?>
                     </div>
                     <div class="tab-product-child">
                         <div class="tab-product-item">
@@ -930,156 +496,29 @@
                         </div>
                     </div>
                     <div class="tab-product-child">
+                        <?php 
+                            foreach ($datas['listTablet'] as $row) {
+                                $priceF = number_format($row['new_price'], 0, ',', '.');
+                                $numRand = rand(11, 399);
+                        ?>
                         <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
+                            <a href="./Products/ProductDetail/<?=$row['product_id']?>">
+                                <img class="img-hv" src="<?=$row['product_image']?>" alt="">
+                                <h4><?=$row['product_name']?></h4>
                                 <div class="onl">
                                     <img src="./public/img/icon/tai_xuong.png" alt="">
                                     <span>Online giá rẻ quá</span>
                                 </div>
                                 <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
+                                    <span><?=$priceF?><sup>₫</sup></span>
+                                    <?php if ($row['discount'] > 0) { ?>
+                                        <span>-<?=$row['discount']?>%</span>
+                                    <?php } ?>
                                 </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
+                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(<?=$numRand?>)</div>
                             </a>
                         </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/honor-pad-x9-(2).webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </section>

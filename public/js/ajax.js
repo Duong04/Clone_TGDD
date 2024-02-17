@@ -90,3 +90,49 @@ function updateStatus(status, id) {
     });
 }
 
+function productFilter(value_1=null,value_2=null, category_id, subcat_id=null) {
+    const values_1 = $(value_1).val();
+    const values_2 = $(value_2).val();
+    $.ajax({
+        url: "./Products/ProductFilterProcessing",
+        method: "POST",
+        data: { 
+            values_1: values_1,
+            values_2: values_2,
+            category_id: category_id,
+            subcat_id: subcat_id
+        },
+        success: function(data) {
+            $('#product-list').html(data);
+            listProducts = $('.product-item').length;
+            $('#product-count').text(listProducts);
+        },
+    })
+}
+
+function filterWithChecked(element, category_id, subcat_id=null) {
+    const isChecked = element;
+
+    if (isChecked.checked) {
+        handleAjaxFilter(element.value, category_id, subcat_id);
+    }else {
+        handleAjaxFilter('false', category_id, subcat_id);
+    }
+}
+
+function handleAjaxFilter(element, category_id, subcat_id) {
+    $.ajax({
+        url: "./Products/ProductFilterProcessing",
+        method: "POST",
+        data: {
+            element: element,
+            category_id: category_id,
+            subcat_id: subcat_id
+        },
+        success: function(data) {
+            $('#product-list').html(data);
+            listProducts = $('.product-item').length;
+            $('#product-count').text(listProducts);
+        }
+    });
+}

@@ -261,7 +261,7 @@
             $desc = $_POST['description'];
             $user_id = $_SESSION['user_id'];
             $countPrice = $price - ($price * ($discount / 100));
-            $newPrice = $discount > 0 ? $countPrice : 0;
+            $newPrice = $discount > 0 ? $countPrice : $price;
             $targetDir = './public/img/products/';
             $target_file = $targetDir . basename($image);
 
@@ -335,7 +335,7 @@
             $desc = $_POST['description'];
             $user_id = $_SESSION['user_id'];
             $countPrice = $price - ($price * ($discount / 100));
-            $newPrice = $discount > 0 ? $countPrice : 0;
+            $newPrice = $discount > 0 ? $countPrice : $price;
             $targetDir = './public/img/products/';
             $target_file = $targetDir . basename($image);
 

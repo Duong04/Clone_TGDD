@@ -6,11 +6,14 @@
 
         function profile() {
             $model = $this->model('UserModels');
+            $categoriesModel = $this->model('CategoriesModels');
+            $listCategories = $categoriesModel->selectCategories();
             if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
                 $row = $model->selectId($user_id);
                 $this->view('customer/layouts/layoutInfoUser', 
-                                ['page'=>'profile', 
+                                ['listCategories'=> $listCategories,
+                                'page'=>'profile', 
                                 'row'=>$row],
                             );
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

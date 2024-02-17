@@ -6,6 +6,8 @@
 
         function login() {
             $model = $this->model('UserModels');
+            $categoriesModel = $this->model('CategoriesModels');
+            $listCategories = $categoriesModel->selectCategories();
             $errorEmail = '';
             $errorPsw = '';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -40,12 +42,15 @@
                 }
             }
             $this->view('customer/login/login', 
-                        ['errorEmail' => $errorEmail,
+                        ['listCategories'=> $listCategories,
+                        'errorEmail' => $errorEmail,
                         'errorPsw' => $errorPsw]); 
         }
 
         function register() {
             $model = $this->model('UserModels');
+            $categoriesModel = $this->model('CategoriesModels');
+            $listCategories = $categoriesModel->selectCategories();
             $emailError = '';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['submit'])) {
@@ -75,7 +80,7 @@
                     }
                 }
             }
-            $this->view('customer/register/register', ['errorEmail' => $emailError]);
+            $this->view('customer/register/register', ['listCategories'=> $listCategories, 'errorEmail' => $emailError]);
         }
 
         function confirmUser($token=null) {
@@ -92,7 +97,9 @@
 
         function forgetPassword() { 
             $model = $this->model('UserModels');
-            $this->view('customer/login/forgetPsw');
+            $categoriesModel = $this->model('CategoriesModels');
+            $listCategories = $categoriesModel->selectCategories();
+            $this->view('customer/login/forgetPsw', ['listCategories'=> $listCategories]);
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['submit'])) {
                     $email = $_POST['email'];
@@ -164,7 +171,9 @@
         }
 
         function checkMail() {
-            $this->view('customer/register/checkMail');
+            $categoriesModel = $this->model('CategoriesModels');
+            $listCategories = $categoriesModel->selectCategories();
+            $this->view('customer/register/checkMail', ['listCategories'=> $listCategories]);
         }
     }
 ?>

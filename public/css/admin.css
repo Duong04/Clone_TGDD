@@ -31,3 +31,9 @@ input:focus {
 div.dataTables_wrapper div.dataTables_length select {
     min-width: 60px;
 }
+
+.page-link:focus {
+    outline: none;
+    box-shadow: none !important;
+    background-color: transparent !important;
+}

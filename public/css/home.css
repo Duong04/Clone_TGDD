@@ -107,6 +107,12 @@
     bottom: 5px;
 }
 
+.product-img {
+    display: flex;
+    align-items: center;
+    height: 200px;
+}
+
 .timeline-title {
     position: relative;
     height: 120px;
@@ -204,6 +210,11 @@
     font-weight: 600;
     color: #eb5757;
     background: #fff0e9;
+}
+
+.img-hv {
+    width: 100%;
+    transition: all ease 0.5s;
 }
 
 .tab-product-item a:hover .img-hv,
@@ -305,7 +316,7 @@
     font-size: 1.1rem;
 }
 
-.price-2 span:last-child {
+.price-2 span:nth-child(2) {
     display: flex;
     align-items: center;
     justify-content: center;
