@@ -209,7 +209,7 @@
                         $numRand = rand(11, 399);
                     ?>
                     <div class="product-item">
-                        <a href="">
+                        <a href="./Products/ProductDetail/<?=$row['product_id']?>">
                             <img src="<?=$row['product_image']?>" alt="">
                             <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
@@ -250,7 +250,7 @@
                         $numRand = rand(11, 399);
                     ?>
                     <div class="product-item">
-                        <a href="">
+                        <a href="./Products/ProductDetail/<?=$row['product_id']?>">
                             <img src="<?=$row['product_image']?>" alt="">
                             <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
