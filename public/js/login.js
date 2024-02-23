@@ -37,10 +37,6 @@ function validatePassword() {
         passwordError.textContent = "Vui lòng nhập mật khẩu";
         password.style.borderColor = 'red';
         return false;
-    }else if(password.value.length < 7){
-        passwordError.textContent = "Vui lòng nhập độ dài hơn 6 ";
-        password.style.borderColor = 'red';
-        return false;
     }
      else {
         passwordError.textContent = ""; 

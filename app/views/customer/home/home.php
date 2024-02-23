@@ -344,156 +344,7 @@
                         <?php } ?>
                     </div>
                     <div class="tab-product-child">
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
-                        <div class="tab-product-item">
-                            <a href="">
-                                <img class="img-hv" src="./public/img/products/pin-sac-du-phong-polymer-10000mah-ava-jp299-thumb-1-600x600.webp" alt="">
-                                <h4>Loa Bluetooth Rezo Pulse E20</h4>
-                                <div class="onl">
-                                    <img src="./public/img/icon/tai_xuong.png" alt="">
-                                    <span>Online giá rẻ quá</span>
-                                </div>
-                                <div class="price-2">
-                                    <span>7.000.000<sup>₫</sup></span>
-                                    <span>15%</span>
-                                </div>
-                                <div class="star"><span>4.3 <i class="fa-solid fa-star"></i> </span>(53)</div>
-                            </a>
-                        </div>
+                        <h3>Sự kiện này chưa diễn ra!</h3>
                     </div>
                     <div class="tab-product-child">
                         <?php 
@@ -557,11 +408,16 @@
         </div>
         <?php include_once "./app/views/customer/includes/footer.php" ?>
     </main>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./public/js/jQuery.js" type="module"></script>
     <script src="./public/js/home.js"></script>
+    <script src="./public/js/header.js"></script>
 </body>
 
 </html>

@@ -9,6 +9,11 @@
             return $this->cud($sql, [$userName, $email, $password, $token]);
         }
 
+        function inserUsers2($userName, $email, $password, $status) {
+            $sql = "INSERT INTO users (user_name, email, password, status, role, create_date, user_image) values(?, ?, ?, ?, 'Nhân viên', NOW(), './public/img/users/default-image.png')";
+            return $this->cud($sql, [$userName, $email, $password, $status]);
+        }
+
         function selectEmail($email) {
             $sql = "SELECT * FROM users WHERE email = ?";
             return $this->selectOne($sql, [$email]);
@@ -39,14 +44,19 @@
             return $this->cud($sql, [$password, $email]);
         }
 
-        function updateInfoUser($userName, $email, $phone, $address, $image, $target_file, $user_id) {
+        function updateInfoUser($userName, $phone, $address, $image, $target_file, $user_id) {
             if ($image == '') {
-                $sql = "UPDATE users SET user_name = ?, email = ?, phone = ?, address = ? WHERE user_id = ?";
-                return $this->cud($sql, [$userName, $email, $phone, $address, $user_id]);
+                $sql = "UPDATE users SET user_name = ?, phone = ?, address = ? WHERE user_id = ?";
+                return $this->cud($sql, [$userName, $phone, $address, $user_id]);
             }else {
-                $sql = "UPDATE users SET user_name = ?, email = ?, phone = ?, address = ?, user_image = ? WHERE user_id = ?";
-                return $this->cud($sql, [$userName, $email, $phone, $address, $target_file, $user_id]);
+                $sql = "UPDATE users SET user_name = ?, phone = ?, address = ?, user_image = ? WHERE user_id = ?";
+                return $this->cud($sql, [$userName, $phone, $address, $target_file, $user_id]);
             }
+        }
+
+        function updateUser($userName, $phone, $address, $user_id) {
+            $sql = "UPDATE users SET user_name = ?, phone = ?, address = ? WHERE user_id = ?";
+            return $this->cud($sql, [$userName, $phone, $address, $user_id]);
         }
 
         function updateRole($role, $id) {

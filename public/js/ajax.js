@@ -136,3 +136,93 @@ function handleAjaxFilter(element, category_id, subcat_id) {
         }
     });
 }
+
+function removeCart(product_id) {
+    $.ajax({
+        url: "./Cart/RemoveCart",
+        method: "POST",
+        data: {
+            product_id: product_id
+        },
+        success: function(data) {
+            $('#sub-total').html(data);
+            $('#sub-total-2').html(data);
+            $('tr[data-id="' + product_id + '"]').remove();
+            const a = $('tbody tr').length;
+            if (a == 0) {
+                window.location.reload();
+            }
+        }
+    });
+}
+
+function updateQuantity(product_id, quantity_change) {
+    let quantity_input = $('#quantity_' + product_id);
+    let new_quantity = parseInt(quantity_input.val()) + parseInt(quantity_change);
+    if (new_quantity < 1) {
+        new_quantity = 1;
+        return;
+    }else if (new_quantity > 10) {
+        new_quantity = 10;
+    }
+    quantity_input.val(new_quantity);
+
+    updateCartQuantity(product_id, new_quantity);
+}
+
+function updateCartQuantity(product_id, new_quantity) {
+    $.ajax({
+        url: './Cart/Index', // Đường dẫn đến script PHP xử lý yêu cầu
+        type: 'POST',
+        data: { product_id: product_id, quantity: new_quantity },
+        success: function(response) {
+            const parseJson = JSON.parse(response);
+            $('#total_price_'+product_id).html(parseJson.newTotalPrice);
+            $('#sub-total').html(parseJson.totalPrice);
+        },
+    });
+}
+
+function updateOrderStatus(status, order_id) {
+    $.ajax({
+        url: './Admin/UpdateOrderStatus',
+        method: 'POST',
+        data: { 
+            status: status, 
+            order_id: order_id
+        },
+        success: function(response) {
+            $('td[data-order-id='+order_id+']').text(response);
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Cập nhật thành công!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    })
+}
+
+function updateOrderStatus2(status, order_id) {
+    $.ajax({
+        url: './Admin/UpdateOrderStatus2',
+        method: 'POST',
+        data: { 
+            status: status, 
+            order_id: order_id
+        },
+        success: function(response) {
+            console.log(response);
+            $('#buttons'+order_id).html(response);
+            $('td[data-order-id='+order_id+']').text(status);
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Cập nhật thành công!',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    })
+}

@@ -1,0 +1,137 @@
+main {
+    background-color: var(--matte-white-color);
+}
+
+.container {
+    max-width: var(--width-1200);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0 80px;
+}
+
+article {
+    width: 78%;
+    background-color: var(--white-color);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+article>h3 {
+    text-align: center;
+    margin: 10px 0 40px;
+}
+
+.tabs {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.tab.active {
+    background-color: #d8f5e6;
+    border-bottom: 2px solid #7e7c7c;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    border-top: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+}
+
+.order {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.success-order {
+    color: #00ae3d;
+    position: absolute;
+    left: 350px;
+    top: 12px;
+    font-size: 1.2rem;
+}
+
+.order h3 {
+    color: #007BFF;
+}
+
+.order p {
+    margin: 8px 0;
+}
+
+.order a {
+    color: #007BFF;
+}
+
+.btn-event {
+    display: flex;
+    gap: 20px;
+}
+
+.no-order {
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.no-order img {
+    max-width: 160px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all ease 0.3s;
+}
+
+.btn-outline-danger {
+    border: 1px solid #dc3545;
+}
+
+.btn-outline-success {
+    border: 1px solid #198754;
+}
+
+.btn-outline-warning {
+    border: 1px solid #ffc107;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: var(--white-color);
+}
+
+.btn-outline-success:hover {
+    background-color: #198754;
+    color: var(--white-color);
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: var(--white-color);
+}

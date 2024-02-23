@@ -6,6 +6,7 @@
 article {
     max-width: var(--width-1200);
     margin: 30px auto;
+    padding-bottom: 30px;
 }
 
 .banner {

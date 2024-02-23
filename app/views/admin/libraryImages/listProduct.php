@@ -35,7 +35,7 @@
                         <tr data-id="<?=$row['product_id']?>">
                             <th style="width:35px;"><?=$i?></th>
                             <td><?=$row['product_name']?></td>
-                            <td><img style="width: 80px; height: 80px;" src="<?=$row['product_image']?>" alt=""></td>
+                            <td><a href="./Admin/LibraryImageDetail/<?=$row['product_id']?>"><img style="width: 80px; height: 80px;" src="<?=$row['product_image']?>" alt=""></a></td>
                             <td><?=$row['category_name']?></td>
                             <td><?=$row['subcat_name']?></td>
                             <td><?=$row['user_name']?></td>

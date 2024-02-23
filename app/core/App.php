@@ -4,6 +4,7 @@
         private $action = "index";
         private $params = [];
         private $router;
+
         function __construct() {
             $url = $this->UrlProcess();
 

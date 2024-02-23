@@ -100,7 +100,7 @@
                     <div class="box-price">
                         <span><?=$newPriceF?><sup>₫</sup></span>
                         <del><?=$initialPriceF?><sup>₫</sup></del>
-                        <span><?=$datas['productDetail']['discount']?>%</span>
+                        <span>-<?=$datas['productDetail']['discount']?>%</span>
                     </div>
                     <?php }else { ?>
                     <div class="box-price">
@@ -132,8 +132,12 @@
                         </div>
                     </div>
                     <div class="block-button">
-                        <form action="">
-                            <button>Mua ngay</button>
+                        <form action="./Cart" method="POST">
+                            <input name="product_id" value="<?=$datas['productDetail']['product_id']?>" type="hidden">
+                            <input name="product_name" value="<?=$datas['productDetail']['product_name']?>" type="hidden">
+                            <input name="product_image" value="<?=$datas['productDetail']['product_image']?>" type="hidden">
+                            <input name="new_price" value="<?=$datas['productDetail']['new_price']?>" type="hidden">
+                            <button name="submit">Đặt hàng ngay</button>
                         </form>
                         <div class="btn-disabel">
                             <button>
@@ -292,6 +296,10 @@
         <?php include "./app/views/customer/includes/footer.php" ?>
     </main>
     <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <script
       type="text/javascript"
       src="https://code.jquery.com/jquery-1.11.0.min.js"
     ></script>
@@ -304,6 +312,7 @@
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
     <script src="./public/js/jQuery.js"></script>
+    <script src="./public/js/header.js"></script>
     <script src="./public/js/productDetail.js"></script>
 </body>
 </html>

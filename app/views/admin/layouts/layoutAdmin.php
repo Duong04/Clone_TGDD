@@ -1,10 +1,17 @@
 <?php 
     if (isset($_SESSION['user_id'])) {
         if ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'Nhân viên') {
-            header('Location: ./');
+            header('Location: ../');
+        }
+
+        if ($datas['user']['status'] == 'Chưa kích hoạt' || $datas['user']['status'] == 'Vô hiệu hóa') {
+            session_unset();
+
+            session_destroy();
+            header('Location: ../UserAuthentication/Login');
         }
     }else {
-        header('Location: ./UserAuthentication');
+        header('Location: ../UserAuthentication/Login');
     }
 ?>
 <!DOCTYPE html>
@@ -20,6 +27,7 @@
 
     <title>SB Admin 2 - Dashboard</title>
     <base href="http://localhost/php/php_oop/mvc/" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
@@ -108,7 +116,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
     <script src="./public/js/ajax.js"></script>
     <script src="./public/js/admin.js"></script>
     <!-- Bootstrap core JavaScript-->
@@ -122,12 +130,9 @@
     <script src="./public/library/admin-boostrap/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="./public/library/admin-boostrap/vendor/chart.js/Chart.min.js"></script>
     <script src="./public/library/admin-boostrap/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="./public/library/admin-boostrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="./public/library/admin-boostrap/js/demo/chart-area-demo.js"></script>
-    <script src="./public/library/admin-boostrap/js/demo/chart-pie-demo.js"></script>
     <script src="./public/library/admin-boostrap/js/demo/datatables-demo.js"></script>
 </body>
 

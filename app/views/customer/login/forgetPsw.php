@@ -110,7 +110,7 @@
     </style>
 </head>
 <body>
-<main class="main">
+    <main class="main">
         <?php include "./app/views/customer/includes/header.php" ?>
         <!-- article -->
         <article>
@@ -129,5 +129,10 @@
         <!-- footer -->
         <?php include "./app/views/customer/includes/footer.php" ?>
     </main>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+    <script src="./public/js/header.js"></script>
 </body>
 </html>

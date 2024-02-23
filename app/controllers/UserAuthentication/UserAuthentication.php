@@ -1,10 +1,10 @@
 <?php 
     class UserAuthentication extends Controller {
-        function index() {
+        public function index() {
             header('Location: ./UserAuthentication/Login');
         }
 
-        function login() {
+        public function login() {
             $model = $this->model('UserModels');
             $categoriesModel = $this->model('CategoriesModels');
             $listCategories = $categoriesModel->selectCategories();
@@ -27,11 +27,19 @@
                             $errorEmail = 'Tài khoản đã bị vô hiệu hóa';
                         } else {
                             if (password_verify($psw, $password)) {
-                                $_SESSION['userName'] = $user_name;
-                                $_SESSION['role'] = $role;
-                                $_SESSION['user_id'] = $user_id;
-                                $_SESSION['status'] = $status;
-                                header('Location: ../');
+                                if ($role == 'Nhân viên' || $role == 'Admin') {
+                                    $_SESSION['userName'] = $user_name;
+                                    $_SESSION['role'] = $role;
+                                    $_SESSION['user_id'] = $user_id;
+                                    $_SESSION['status'] = $status;
+                                    header('Location: ../Admin');
+                                }else {
+                                    $_SESSION['userName'] = $user_name;
+                                    $_SESSION['role'] = $role;
+                                    $_SESSION['user_id'] = $user_id;
+                                    $_SESSION['status'] = $status;
+                                    header('Location: ../');
+                                }
                             }else {
                                 $errorPsw = 'Mật khẩu không đúng';
                             }
@@ -47,7 +55,7 @@
                         'errorPsw' => $errorPsw]); 
         }
 
-        function register() {
+        public function register() {
             $model = $this->model('UserModels');
             $categoriesModel = $this->model('CategoriesModels');
             $listCategories = $categoriesModel->selectCategories();
@@ -83,7 +91,7 @@
             $this->view('customer/register/register', ['listCategories'=> $listCategories, 'errorEmail' => $emailError]);
         }
 
-        function confirmUser($token=null) {
+        public function confirmUser($token=null) {
             $model = $this->model('UserModels');
             if (isset($token)) {
                 $query = $model->updateStatusWithToken($token);
@@ -95,7 +103,7 @@
             }
         }
 
-        function forgetPassword() { 
+        public function forgetPassword() { 
             $model = $this->model('UserModels');
             $categoriesModel = $this->model('CategoriesModels');
             $listCategories = $categoriesModel->selectCategories();
@@ -137,7 +145,7 @@
 
         }
 
-        function resetPassword($otp=null) {
+        public function resetPassword($otp=null) {
             $model = $this->model('UserModels');
             if (isset($otp)) {
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -170,7 +178,7 @@
             $this->view('customer/login/resetPsw');
         }
 
-        function checkMail() {
+        public function checkMail() {
             $categoriesModel = $this->model('CategoriesModels');
             $listCategories = $categoriesModel->selectCategories();
             $this->view('customer/register/checkMail', ['listCategories'=> $listCategories]);

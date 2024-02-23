@@ -17,17 +17,21 @@
                     </a>
                 </div>
                 <div class="form-search">
-                    <form action="">
-                        <input type="text" placeholder="Bạn muốn tìm gì...">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <form action="./Home/Search" method="POST">
+                        <input id="search" type="text" placeholder="Bạn muốn tìm gì..." name="search" autocomplete="off">
+                        <button name="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
+                    <div id="search-data" class="search-data">
+                        
+                    </div>
                 </div>
                 <div class="account">
                     <a href="<?=isset($_SESSION['user_id']) ? './InfoUsers/Profile' : './UserAuthentication/Login' ?>">Tài khoản & đơn hàng</a>
                 </div>
                 <div class="cart">
-                    <a href="">
-                        <div class="icon-cart"><i class="fa-solid fa-cart-plus"></i><span>1</span></div>
+                    <a href="./Cart">
+                        <?php $cartCount = isset($_COOKIE['cart']) ? count(json_decode($_COOKIE['cart'], true)) : 0 ?>
+                        <div class="icon-cart"><i class="fa-solid fa-cart-plus"></i><span><?=$cartCount?></span></div>
                         <strong>Giỏ hàng</strong>
                     </a>
                 </div>

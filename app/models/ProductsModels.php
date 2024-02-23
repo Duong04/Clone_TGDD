@@ -17,8 +17,28 @@
                     ON P.category_id = C.category_id
                     INNER JOIN subcategories S 
                     ON P.subcat_id = S.subcat_id  
-                    WHERE product_id = ?";
+                    WHERE P.product_id = ?";
             return $this->selectOne($sql, [$id]);
+        }
+
+        function selectProductLike($data) {
+            $sql = "SELECT * FROM products P 
+                    INNER JOIN categories C 
+                    ON P.category_id = C.category_id
+                    INNER JOIN subcategories S 
+                    ON P.subcat_id = S.subcat_id  
+                    WHERE P.product_name like '%$data%' OR C.category_name like '%$data%' OR S.subcat_name like '%$data%' ORDER BY RAND() LIMIT 5";
+            return $this->selectAll($sql);
+        }
+
+        function selectProductLike_2($data) {
+            $sql = "SELECT * FROM products P 
+                    INNER JOIN categories C 
+                    ON P.category_id = C.category_id
+                    INNER JOIN subcategories S 
+                    ON P.subcat_id = S.subcat_id  
+                    WHERE P.product_name like '%$data%' OR C.category_name like '%$data%' OR S.subcat_name like '%$data%' ORDER BY RAND()";
+            return $this->selectAll($sql);
         }
 
         function selectProductName($name, $subcat_id) {
@@ -201,6 +221,21 @@
         function otherProduct($category_id) {
             $sql = "SELECT * FROM products WHERE category_id != ? ORDER BY RAND() LIMIT 15";
             return $this->selectAllWithId($sql, [$category_id]);
+        }
+
+        function selectPId($product_id) {
+            $sql = "SELECT * FROM products WHERE product_id = ?";
+            return $this->selectOne($sql, [$product_id]);
+        }
+
+        function updateQuantity($product_id, $quantity) {
+            $sql = "UPDATE products SET product_quantity = product_quantity - ? WHERE product_id = ?";
+            return $this->cud($sql, [$quantity, $product_id]);
+        }
+
+        function updateQuantity_2($product_id, $quantity) {
+            $sql = "UPDATE products SET product_quantity = product_quantity + ? WHERE product_id = ?";
+            return $this->cud($sql, [$quantity, $product_id]);
         }
     }
 ?>

@@ -1,14 +1,27 @@
 <?php 
     class Products extends Controller {
-        function categories($category_id = null, $subcat_id=null) {
+        public function categories($category_id = null, $subcat_id=null) {
             $productModel = $this->model('ProductsModels');
             $categoriesModel = $this->model('CategoriesModels');
             $subcatModel = $this->model('SubCategoriesModels');
+            $usersModel = $this->model('UserModels');
             $listCategories = $categoriesModel->selectCategories();
+
             if (isset($category_id)) {
+                if (isset($_SESSION['user_id'])) {
+                    $users = $usersModel->selectId($_SESSION['user_id']);
+                    if ($users['status'] == 'Vô hiệu hóa' || $users['status'] == 'Chưa kích hoạt') {
+                        session_unset();
+    
+                        session_destroy();
+                        header('Location: ../../UserAuthentication/Login');
+                    }
+                }
+
                 $listCategory = $categoriesModel->selectCategoryId($category_id);
                 $listSubcat = $subcatModel->selectSubcategories($category_id);
                 $subcat = null;
+
                 if (isset($subcat_id)) {
                     $subcat = $subcatModel->selectSubcatId($subcat_id);
                     $listProducts = $productModel->selectProductWithCategories($category_id, $subcat_id);
@@ -28,7 +41,7 @@
             }
         }
 
-        function productFilterProcessing() {
+        public function productFilterProcessing() {
             $productModel = $this->model('ProductsModels');
             if (isset($_POST['category_id'])) {
                 $value_1 = isset($_POST['values_1']) ? $_POST['values_1'] : null;
@@ -44,7 +57,7 @@
             }
         }
 
-        function htmlLayoutProduct($listProduct) {
+        public function htmlLayoutProduct($listProduct) {
             if ($listProduct != null) {
                 foreach ($listProduct as $row) {
                     $newPriceF = number_format($row['new_price'], 0, ',', '.');
@@ -95,11 +108,23 @@
             }
         }
 
-        function productDetail($product_id = null) {
+        public function productDetail($product_id = null) {
             $productModel = $this->model('ProductsModels');
             $categoriesModel = $this->model('CategoriesModels');
             $listCategories = $categoriesModel->selectCategories();
+            $usersModel = $this->model('UserModels');
+
             if (isset($product_id)) {
+                if (isset($_SESSION['user_id'])) {
+                    $users = $usersModel->selectId($_SESSION['user_id']);
+                    if ($users['status'] == 'Vô hiệu hóa' || $users['status'] == 'Chưa kích hoạt') {
+                        session_unset();
+    
+                        session_destroy();
+                        header('Location: ../UserAuthentication/Login');
+                    }
+                }
+                
                 $productModel->viewUpdate($product_id);
                 $productDetail = $productModel->selectProductId($product_id);
                 $listImages = $productModel->selectLibary($product_id);

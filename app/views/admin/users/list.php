@@ -6,7 +6,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="./Admin/AddCategory" class="m-0 font-weight-bold btn yellow text-white">Thêm mới</a>
+            <a href="./Admin/AddUser" class="m-0 font-weight-bold btn yellow text-white">Thêm mới</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -58,11 +58,11 @@
                             <td><?=$row['user_name']?></td>
                             <td><img class="object-fit-cover rounded-circle border" style="width: 60px; height: 60px;" src="<?=$row['user_image']?>" alt=""></td>
                             <td><?=$row['email']?></td>
-                            <td><?=$row['create_date']?></td>
+                            <td style="width: 100px;"><?=$row['create_date']?></td>
                             <td><?=$row['address']?></td>
                             <td data-user-id="<?=$row['user_id']?>" data-column="role"><?=$row['role']?></td>
                             <td data-user-id="<?=$row['user_id']?>" data-column="status"><?=$row['status']?></td>
-                            <td>
+                            <td style="width: 90px;">
                             <?php 
                             if ($_SESSION['role'] == 'Admin' && $row['role'] !== 'Admin') {
                             ?>
@@ -70,7 +70,7 @@
                                 <button onclick="updateRole('Nhân viên', <?=$row['user_id']?>)" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Nhân viên"><i class="fa-solid fa-user-tie"></i></button>
                             <?php } ?>
                             </td>
-                            <td>
+                            <td style="width: 90px;">
                             <?php if ($row['role'] != 'Admin') { ?>
                                 <button onclick="updateStatus('Vô hiệu hóa', <?=$row['user_id']?>)" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Vô hiệu hóa"><i class="fa-solid fa-lock"></i></button>
                                 <button onclick="updateStatus('Đã kích hoạt', <?=$row['user_id']?>)" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Kích hoạt"><i class="fa-solid fa-lock-open"></i></button>

@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="./public/css/products.css">
 </head>
 <body>
-<main class="main">
+    <main class="main">
         <?php include "./app/views/customer/includes/header.php" ?>
         <div class="banner">
             <div class="banner-main">
@@ -58,38 +58,11 @@
         </div>
         <!-- article -->
         <article>
-            <div class="lst-quickfilter">
-                <?php foreach ($datas['listSubcat'] as $row) { ?>
-                <a href="./Products/Categories/<?=$row['category_id']?>/<?=$row['subcat_id']?>"><img src="<?=$row['subcat_image']?>" alt=""></a>
-                <?php } ?>
-            </div>
-            <div class="filter">
-            <h4><span id="product-count"><?=count($datas['listProducts'])?></span> <?=$datas['listCategory']['category_name'].' '.(isset($datas['subcat']) ? $datas['subcat']['subcat_name'] : '')?></h4>
-                <div class="checked">
-                    <input value="discount" onchange="filterWithChecked(this, <?=$datas['listCategory']['category_id']?>, <?=isset($datas['subcat']) ? $datas['subcat']['subcat_id'] : ''?>)" type="checkbox" name="discount" id="discount">
-                    <label for="discount">Giảm giá</label>
-                </div>
-                <select onchange="productFilter(this, null, <?=$datas['listCategory']['category_id']?>, <?=isset($datas['subcat']) ? $datas['subcat']['subcat_id'] : ''?>)" name="" id="product-filter">
-                    <option value="">Giá</option>
-                    <option value="1">Dưới 1 triệu</option>
-                    <option value="2">Từ 1 - 5 triệu</option>
-                    <option value="3">Từ 5 - 10 triệu</option>
-                    <option value="4">Từ 10 - 15 triệu</option>
-                    <option value="5">Từ 15 - 20 triệu</option>
-                    <option value="6">Trên 20 triệu</option>
-                </select>
-                <select onchange="productFilter(null, this, <?=$datas['listCategory']['category_id']?>, <?=isset($datas['subcat']) ? $datas['subcat']['subcat_id'] : ''?>)" name="" id="">
-                    <option value="">Sắp xếp</option>
-                    <option value="descView">Sắp xếp nổi bật</option>
-                    <option value="descPrice">Giá cao đến thấp</option>
-                    <option value="ascPrice">Giá thấp đến cao</option>
-                    <option value="ascName">Từ A - Z</option>
-                    <option value="descName">Từ Z - A</option>
-                </select>
-            </div>
+            <h3>Kết quả tìm kiểm: <?=count($datas['listSearchResult'])?> sản phẩm</h3>
             <div class="list-product" id="product-list">
                 <?php 
-                foreach ($datas['listProducts'] as $row) { 
+                if ($datas['listSearchResult'] != null) {
+                foreach ($datas['listSearchResult'] as $row) { 
                     $newPriceF = number_format($row['new_price'], 0, ',', '.');
                     $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
                     $numRand = rand(11, 399);
@@ -129,6 +102,8 @@
                         </div>
                     </a>
                 </div>
+                <?php } } else { ?>
+                    <p>Không tìm thấy kết quả!</p>
                 <?php } ?>
             </div>
         </article>
