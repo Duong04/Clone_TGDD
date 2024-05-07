@@ -1,18 +1,22 @@
 <?php 
     class InfoUsers extends Controller {
+        protected $listCategories;
+
+        public function __construct() {
+            $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
         public function index() {
             header('Location: ./InfoUsers/Profile');
         }
 
         public function profile() {
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
             if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
                 $row = $model->selectId($user_id);
                 $this->view('customer/infoUsers/profile', 
-                                ['listCategories'=> $listCategories,
+                                ['listCategories' => $this->listCategories,
                                 'row'=>$row],
                             );
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -49,10 +53,8 @@
 
         public function orders($status = null, $order_id = null) {
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
             $ordersModel = $this->model('OrdersModels');
 
-            $listCategories = $categoriesModel->selectCategories();
             if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
                 $confirmation = $ordersModel->selectOrdersWithStatus('Chờ xác nhận', $user_id);
@@ -78,7 +80,7 @@
                                 'shipping' => $shipping,
                                 'delivered' => $delivered,
                                 'cancelled' => $cancelled,
-                                'listCategories'=> $listCategories,
+                                'listCategories' => $this->listCategories,
                                 'row'=>$row
                             ]);
                 if (isset($status, $order_id)) {
@@ -124,10 +126,8 @@
 
         public function orderDetail($order_id) {
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
             $ordersModel = $this->model('OrdersModels');
 
-            $listCategories = $categoriesModel->selectCategories();
             if (isset($_SESSION['user_id'])) {
                 echo $order_id;
                 $user_id = $_SESSION['user_id'];
@@ -135,7 +135,7 @@
                 $row = $model->selectId($user_id);
                 $this->view('customer/infoUsers/orderDetail',
                             [
-                                'listCategories'=> $listCategories,
+                                'listCategories' => $this->listCategories,
                                 'row'=>$row,
                                 'listOrderDetail'=>$listOrderDetail
                             ]);

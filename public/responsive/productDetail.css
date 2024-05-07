@@ -1,0 +1,99 @@
+@media (max-width: 76.875em) {
+    .same-products,
+    .other-products,
+    hr,
+    .content-far,
+    .header-title {
+        width: 1000px;
+    }
+
+    .description-all {
+        width: 100%;
+    }
+
+    .description-child {
+        width: 80%;
+    }
+}
+
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    .same-products,
+    .other-products,
+    hr,
+    .content-far,
+    .header-title {
+        width: 700px;
+    }
+
+    .content-far {
+        flex-direction: column;
+    }
+
+    .content-right,
+    .content-left {
+        width: 100%;
+    }
+}
+
+@media (max-width: 47.4375em) {
+    .same-products,
+    .other-products,
+    hr,
+    .content-far,
+    .header-title {
+        width: 90%;
+    }
+
+    .breadcrumb li:last-child,
+    .breadcrumb a,
+    .breadcrumb span {
+        font-size: 0.8rem;
+    }
+
+    .header-title h3 {
+        font-size: 1.0rem;
+    }
+
+    .content-far {
+        flex-direction: column;
+    }
+
+    .content-right,
+    .content-left {
+        width: 100%;
+    }
+
+    .policy-item p {
+        font-size: 0.9rem;
+    }
+
+    .description-child {
+        font-size: 1.0rem;
+    }
+}
+
+@media (max-width: 30.625em) {
+    .pr-loyalty,
+    .policy {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .loyalty-item {
+        width: 48%;
+    }
+
+    .box-price span:first-child {
+        font-size: 1.2rem;
+    }
+
+    .box-price del,
+    .box-price span {
+        font-size: 1.0rem;
+    }
+
+    .product-item {
+        height: auto;
+    }
+}

@@ -1,0 +1,29 @@
+@media (max-width: 76.875em) {
+    .footer-main {
+        flex-wrap: wrap;
+        width: 1000px;
+    }
+}
+
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    .footer-main {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+        width: 700px;
+    }
+}
+
+@media (max-width: 47.4375em) {
+    .footer-main {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+        width: 90%;
+    }
+
+    .copy-right {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
+}

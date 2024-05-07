@@ -1,11 +1,17 @@
 <?php 
     class Products extends Controller {
+        protected $listCategories;
+
+        public function __construct() {
+            $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
+        
         public function categories($category_id = null, $subcat_id=null) {
             $productModel = $this->model('ProductsModels');
             $categoriesModel = $this->model('CategoriesModels');
             $subcatModel = $this->model('SubCategoriesModels');
             $usersModel = $this->model('UserModels');
-            $listCategories = $categoriesModel->selectCategories();
 
             if (isset($category_id)) {
                 if (isset($_SESSION['user_id'])) {
@@ -32,7 +38,7 @@
                             [
                                 'listCategory' => $listCategory,
                                 'subcat' => $subcat,
-                                'listCategories'=> $listCategories,
+                                'listCategories' => $this->listCategories,
                                 'listSubcat'=> $listSubcat,
                                 'listProducts' => $listProducts
                             ]);
@@ -110,8 +116,6 @@
 
         public function productDetail($product_id = null) {
             $productModel = $this->model('ProductsModels');
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
             $usersModel = $this->model('UserModels');
 
             if (isset($product_id)) {
@@ -132,7 +136,7 @@
                 $otherProduct = $productModel->otherProduct($productDetail['category_id']); 
                 $this->view('customer/products/productDetail', 
                             [
-                                'listCategories' => $listCategories,
+                                'listCategories' => $this->listCategories,
                                 'productDetail' => $productDetail,
                                 'listImages' => $listImages,
                                 'similarProduct' => $similarProduct,

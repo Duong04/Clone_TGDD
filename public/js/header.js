@@ -22,3 +22,22 @@ $(document).ready(function() {
     });
 
 });
+
+const dropDown = document.querySelector('.drop-item');
+const navList = document.querySelector('#nav-list-top');
+
+dropDown.addEventListener('click', () => {
+    navList.classList.toggle('active');
+})
+
+const navBar = document.querySelector('.nav-bar');
+const close = document.querySelector('.close-mobile');
+const menuOther = document.querySelector('.menu-other');
+
+navBar.addEventListener('click', () => {
+    menuOther.classList.add('active');
+});
+
+close.addEventListener('click', () => {
+    menuOther.classList.remove('active');
+})

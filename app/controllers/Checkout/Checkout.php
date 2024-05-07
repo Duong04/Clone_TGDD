@@ -1,12 +1,15 @@
 <?php 
     class Checkout extends Controller {
-        public function index() {
+        protected $listCategories;
+
+        public function __construct() {
             $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
+        public function index() {
             $ordersModels = $this->model('OrdersModels');
             $productsModels = $this->model('ProductsModels');
             $usersModels = $this->model('UserModels'); 
-
-            $listCategories = $categoriesModel->selectCategories();
 
             $user_id = $_SESSION['user_id'];
             $infoUser = $usersModels->selectId($user_id);
@@ -68,17 +71,15 @@
             $this->view('customer/checkout/checkout',
                         [
                             'cart' => $cart,
-                            'listCategories' => $listCategories,
+                            'listCategories' => $this->listCategories,
                             'infoUser' => $infoUser,
                         ]);
         }
 
         public function thanks() {
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
             $this->view('customer/checkout/thanks',
             [
-                'listCategories' => $listCategories,
+                'listCategories' => $this->listCategories,
             ]);
         }
     }

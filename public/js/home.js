@@ -40,7 +40,9 @@ const tabProduct = document.querySelectorAll('.tab-product-child');
 
 tabItem.forEach( (item, index) =>{
     item.onclick = function () {
+        document.querySelector('.tab-item.active').classList.remove('active');
         document.querySelector('.tab-product-child.active').classList.remove('active');
+        item.classList.add('active');
         tabProduct[index].classList.add('active');
     }
 });

@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="./public/css/footer.css">
     <link rel="stylesheet" href="./public/css/products.css">
+    <link rel="stylesheet" href="./public/responsive/header.css">
+    <link rel="stylesheet" href="./public/responsive/footer.css">
 </head>
 <body>
     <main class="main">
@@ -26,33 +28,33 @@
         <div class="banner">
             <div class="banner-main">
                 <a href="">
-                    <img src="./public/img/banner/banner_products/800-200-800x200-59.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/800-200-800x200-59.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/a05-800-200-800x200.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/a05-800-200-800x200.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/iPad-10-800-200-800x200-1.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/iPad-10-800-200-800x200-1.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/iPhone-11-800-200-800x200-1.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/iPhone-11-800-200-800x200-1.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/ipad9-390x97.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/ipad9-390x97.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/Loa-800-200-800x200.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/Loa-800-200-800x200.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/loa-1200-300-1200x300.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/loa-1200-300-1200x300.png" alt="">
                 </a>
             </div>
             <div class="banner-right">
                 <a href="">
-                    <img src="./public/img/banner/banner_products/sticky-s21fe-390x97.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/sticky-s21fe-390x97.png" alt="">
                 </a>
                 <a href="">
-                    <img src="./public/img/banner/banner_products/ipad9-390x97.png" alt="">
+                    <img loading="lazy" src="./public/img/banner/banner_products/ipad9-390x97.png" alt="">
                 </a>
             </div>
         </div>
@@ -70,11 +72,11 @@
                 <div class="product-item">
                     <a href="./Products/ProductDetail/<?=$row['product_id']?>">
                         <div class="product-img">
-                            <img src="<?=$row['product_image']?>" alt="">
+                            <img loading="lazy" src="<?=$row['product_image']?>" alt="">
                         </div>
                         <h5><?=$row['product_name']?></h4>
                         <div class="item-txt-online">
-                            <img src="./public/img/icon/tai_xuong.png" alt="">
+                            <img loading="lazy" src="./public/img/icon/tai_xuong.png" alt="">
                             <span>Online giá rẻ quá</span>
                         </div>
                         <?php if ($row['discount'] > 0) { ?>

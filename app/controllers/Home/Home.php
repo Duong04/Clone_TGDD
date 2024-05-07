@@ -1,8 +1,13 @@
 <?php 
     class Home extends Controller {
+        protected $listCategories;
+
+        public function __construct() {
+            $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
         public function index() {
             $productModel = $this->model('ProductsModels');
-            $categoriesModel = $this->model('CategoriesModels');
             $usersModel = $this->model('UserModels');
             
             if (isset($_SESSION['user_id'])) {
@@ -14,7 +19,6 @@
                     header('Location: ./UserAuthentication/Login');
                 }
             }
-            $listCategories = $categoriesModel->selectCategories();
             $listProductDiscountest = $productModel->selectProductDiscountest();
             $listProductClockDicount = $productModel->selectProductClockDicount();
             $listProductHp = $productModel->selectProductHP();
@@ -23,7 +27,7 @@
             $listTablet = $productModel->selectTablet();
             $this->view('customer/home/home', 
                         [
-                            'listCategories' => $listCategories,
+                            'listCategories' => $this->listCategories,
                             'listProductDiscountest' => $listProductDiscountest,
                             'listProductClockDicount' => $listProductClockDicount,
                             'listProductHp' => $listProductHp,
@@ -35,7 +39,6 @@
 
         public function search() {
             $productModel = $this->model('ProductsModels');
-            $categoriesModel = $this->model('CategoriesModels');
             $usersModel = $this->model('UserModels');
             
             if (isset($_SESSION['user_id'])) {
@@ -48,7 +51,6 @@
                 }
             }
             
-            $listCategories = $categoriesModel->selectCategories();
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['searchData'])) {
                     $data = $_POST['searchData'];
@@ -59,7 +61,7 @@
                     $searchResult_2 = $productModel->selectProductLike_2($data_2);
                     $this->view('customer/home/search', 
                     [
-                        'listCategories' => $listCategories,
+                        'listCategories' => $this->listCategories,
                         'listSearchResult' => $searchResult_2,
                     ]);
                 }

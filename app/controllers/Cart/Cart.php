@@ -1,5 +1,12 @@
 <?php 
     class Cart extends Controller {
+        protected $listCategories;
+
+        public function __construct() {
+            $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
+        
         public function index() {
             $cookieCart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
             $cart = json_decode($cookieCart, true);
@@ -64,10 +71,8 @@
                     setcookie('cart', json_encode($cart), $expire, '/');
                 }
             }
-        
-            $categoriesModel = $this->model('CategoriesModels');
+
             $usersModel = $this->model('UserModels');
-            $listCategories = $categoriesModel->selectCategories();
             
             if (isset($_SESSION['user_id'])) {
                 $users = $usersModel->selectId($_SESSION['user_id']);
@@ -82,7 +87,7 @@
             $this->view('customer/Cart/Cart', 
                         [
                             'cart' => $cart,
-                            'listCategories' => $listCategories,
+                            'listCategories' => $this->listCategories,
                         ]);
         }
 

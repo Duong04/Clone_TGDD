@@ -1,13 +1,18 @@
 <?php 
     class UserAuthentication extends Controller {
+        protected $listCategories;
+
+        public function __construct() {
+            $categoriesModel = $this->model('CategoriesModels');
+            $this->listCategories = $categoriesModel->selectCategories();
+        }
+
         public function index() {
             header('Location: ./UserAuthentication/Login');
         }
 
         public function login() {
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
             $errorEmail = '';
             $errorPsw = '';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,15 +55,15 @@
                 }
             }
             $this->view('customer/login/login', 
-                        ['listCategories'=> $listCategories,
+                    [
+                        'listCategories' => $this->listCategories,
                         'errorEmail' => $errorEmail,
-                        'errorPsw' => $errorPsw]); 
+                        'errorPsw' => $errorPsw
+                    ]); 
         }
 
         public function register() {
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
             $emailError = '';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['submit'])) {
@@ -88,7 +93,7 @@
                     }
                 }
             }
-            $this->view('customer/register/register', ['listCategories'=> $listCategories, 'errorEmail' => $emailError]);
+            $this->view('customer/register/register', ['listCategories' => $this->listCategories, 'errorEmail' => $emailError]);
         }
 
         public function confirmUser($token=null) {
@@ -105,9 +110,7 @@
 
         public function forgetPassword() { 
             $model = $this->model('UserModels');
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
-            $this->view('customer/login/forgetPsw', ['listCategories'=> $listCategories]);
+            $this->view('customer/login/forgetPsw', ['listCategories' => $this->listCategories]);
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (isset($_POST['submit'])) {
                     $email = $_POST['email'];
@@ -179,9 +182,7 @@
         }
 
         public function checkMail() {
-            $categoriesModel = $this->model('CategoriesModels');
-            $listCategories = $categoriesModel->selectCategories();
-            $this->view('customer/register/checkMail', ['listCategories'=> $listCategories]);
+            $this->view('customer/register/checkMail', ['listCategories' => $this->listCategories]);
         }
     }
 ?>

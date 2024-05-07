@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="./public/css/jquery.css">
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="./public/css/footer.css">
+    <link rel="stylesheet" href="./public/responsive/header.css">
+    <link rel="stylesheet" href="./public/responsive/footer.css">
     <style>
         .main {
             background-color: var(--matte-white-color);

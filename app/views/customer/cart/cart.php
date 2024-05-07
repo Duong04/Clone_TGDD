@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="./public/css/footer.css">
     <link rel="stylesheet" href="./public/css/cart.css">
+    <link rel="stylesheet" href="./public/responsive/header.css">
+    <link rel="stylesheet" href="./public/responsive/footer.css">
 </head>
 <body>
     <main class="main">
@@ -46,7 +48,7 @@
                         ?>
                         <tr data-id="<?=$row['product_id']?>">
                             <td>
-                                <img src="<?=$row['product_image']?>" alt="">
+                                <img loading="lazy" src="<?=$row['product_image']?>" alt="">
                                 <button onclick="removeCart(<?=$row['product_id']?>)"><i class="fa-solid fa-circle-xmark"></i> xóa</button>
                             </td>
                             <td>

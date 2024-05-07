@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="./public/css/footer.css">
     <link rel="stylesheet" href="./public/css/productDetail.css">
+    <link rel="stylesheet" href="./public/responsive/header.css">
+    <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/productDetail.css">
 </head>
 <body>
     <main class="main">
@@ -50,7 +53,7 @@
                                 <ul class="splide__list">
                                     <?php foreach ($datas['listImages'] as $row) { ?>
                                         <li class="splide__slide">
-                                            <img src="<?=$row['image']?>" alt="">
+                                            <img loading="lazy" src="<?=$row['image']?>" alt="">
                                         </li>
                                     <?php } ?>
                                 </ul>
@@ -62,7 +65,7 @@
                                 <ul class="splide__list">
                                     <?php foreach ($datas['listImages'] as $row) { ?>
                                         <li class="splide__slide">
-                                            <img src="<?=$row['image']?>" alt="">
+                                            <img loading="lazy" src="<?=$row['image']?>" alt="">
                                         </li>
                                     <?php } ?>
                                 </ul>
@@ -184,7 +187,7 @@
                     </div>
                     <div class="pr-loyalty">
                         <div class="loyalty-item">
-                            <img src="./public/img/qr-tgdd/qr.png" alt="">
+                            <img loading="lazy" src="./public/img/qr-tgdd/qr.png" alt="">
                             <i>Quét để tải app</i>
                         </div>
                         <div class="loyalty-item">
@@ -193,15 +196,15 @@
                             <i>Sản phẩm của tập đoàn MWG</i>
                         </div>
                         <div class="loyalty-item">
-                            <img src="./public/img/qr-tgdd/appstore.png" alt="">
-                            <img src="./public/img/qr-tgdd/ggplay.png" alt="">
+                            <img loading="lazy" src="./public/img/qr-tgdd/appstore.png" alt="">
+                            <img loading="lazy" src="./public/img/qr-tgdd/ggplay.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="same-products">
                 <h1>Các sản phẩm tương tự</h1>
-                <div class="same-product-child products">
+                <div class="same-product-child products-2">
                     <?php 
                     foreach($datas['similarProduct'] as $row) {
                         $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
@@ -210,10 +213,10 @@
                     ?>
                     <div class="product-item">
                         <a href="./Products/ProductDetail/<?=$row['product_id']?>">
-                            <img src="<?=$row['product_image']?>" alt="">
+                            <img loading="lazy" src="<?=$row['product_image']?>" alt="">
                             <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
+                                <img loading="lazy" src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
                             <?php 
@@ -242,7 +245,7 @@
             </div>
             <div class="other-products">
                 <h1>Các sản phẩm khác</h1>
-                <div class="same-product-child products">
+                <div class="same-product-child products-2">
                     <?php 
                     foreach($datas['otherProduct'] as $row) {
                         $initialPriceF = number_format($row['initial_price'], 0, ',', '.');
@@ -251,10 +254,10 @@
                     ?>
                     <div class="product-item">
                         <a href="./Products/ProductDetail/<?=$row['product_id']?>">
-                            <img src="<?=$row['product_image']?>" alt="">
+                            <img loading="lazy" src="<?=$row['product_image']?>" alt="">
                             <h4><?=$row['product_name']?></h4>
                             <div class="item-txt-online">
-                                <img src="./public/img/icon/tai_xuong.png" alt="">
+                                <img loading="lazy" src="./public/img/icon/tai_xuong.png" alt="">
                                 <span>Online giá rẻ quá</span>
                             </div>
                             <?php 

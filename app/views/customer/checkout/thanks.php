@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./public/css/reset.css">
     <link rel="stylesheet" href="./public/css/header.css">
     <link rel="stylesheet" href="./public/css/footer.css">
+    <link rel="stylesheet" href="./public/responsive/header.css">
+    <link rel="stylesheet" href="./public/responsive/footer.css">
     <style>
         body {
             font-family: Arial, sans-serif;

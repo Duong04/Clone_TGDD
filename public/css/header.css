@@ -34,6 +34,10 @@ nav>img {
     z-index: 99;
 }
 
+.nav-item-mobile {
+    display: none;
+}
+
 .nav-top {
     width: 100%;
     height: 70%;
@@ -231,6 +235,11 @@ nav>img {
     transition: all ease 0.4s;
 }
 
+#nav-list-top,
+.nav-list-top-drop-down {
+    display: none;
+}
+
 .nav-address a:hover,
 .account a:hover,
 .cart a:hover {
@@ -273,4 +282,44 @@ menu a::before {
     height: 3px;
     background-color: var(--white-color);
     transition: all linear 0.5s;
+}
+
+.menu-other {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--white-color);
+    z-index: 999999;
+    padding: 20px;
+    animation: moveRight ease 0.4s;
+}
+
+.menu-other.active {
+    display: block;
+}
+
+.menu-other ul {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-other ul a {
+    display: block;
+}
+
+.menu-other ul a:hover {
+    opacity: 0.8;
+}
+
+.close-mobile {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
 }

@@ -1,0 +1,243 @@
+@media (max-width: 76.875em) {
+    .aside-right.active,
+    .aside-left.active {
+        display: none;
+    }
+
+    #section-10,
+    #section-11,
+    #section-9,
+    #section-8,
+    #section-7,
+    #section-6,
+    #section-5,
+    #section-4,
+    #section-3,
+    #section-2,
+    #section {
+        width: 1000px;
+    }
+
+    #section-2>ul a {
+        background-size: cover;
+        padding: 11px;
+    }
+
+    #section-2>ul span {
+        font-size: 1.1rem;
+    }
+
+    #section-2>ul img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .owl-stage-outer-2 img {
+        width: 310px;
+        height: 150px;
+    }
+
+    .service-conv,
+    #section-7 {
+        background-size: cover;
+        border-radius: 20px;
+    }
+
+    .owl-carousel img {
+        width: 100%;
+    }
+
+    .tab-item {
+        background-size: cover;
+        height: 57px;
+        padding: 5px;
+    }
+
+    .tab-product-child {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    #section-10,
+    #section-11,
+    #section-9,
+    #section-8,
+    #section-7,
+    #section-6,
+    #section-5,
+    #section-4,
+    #section-3,
+    #section-2,
+    #section {
+        width: 700px;
+    }
+
+    #section-2>ul a {
+        background-image: none;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .owl-stage-outer-2 img {
+        width: 330px;
+        height: 150px;
+    }
+
+    .service-conv-item {
+        height: 160px;
+    }
+
+    .shopping-trend-item span {
+        bottom: 30px;
+    }
+    
+    .shopping-trend-item strong {
+        bottom: 10px;
+        font-size: 0.8rem;
+    }
+    
+    .tab-item {
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+        background-image: none;
+        background-color: var(--white-color);
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .tab-product-child {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 47.4375em) {
+    .banner img {
+        width: 900px;
+    }
+
+    #section-10,
+    #section-11,
+    #section-9,
+    #section-8,
+    #section-7,
+    #section-6,
+    #section-5,
+    #section-4,
+    #section-3,
+    #section-2,
+    #section {
+        width: 90%;
+    }
+
+    #section {
+        margin-top: -70px;
+    }
+
+    #section-2>ul a {
+        background-image: none;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #section-2>ul span {
+        font-size: 0.9rem;
+    }
+
+    #section-6>h1 {
+        font-size: 2.0rem;
+    }
+
+    .countdown {
+        left: 50px;
+    }
+
+    .tab-item {
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+        background-image: none;
+        background-color: var(--white-color);
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .tab-item span {
+        font-size: 1.0rem;
+    }
+
+    .tab-product-child {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .owl-stage-outer-2 img {
+        width: 100%;
+    }
+
+    .shopping-trend-item span {
+        display: none;
+    }
+
+    .service-text h5 {
+        font-size: 1.0rem;
+    }
+
+    .service-text p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 37.5em) {
+    .tab-product-child {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 30.625em) {
+    #section-2 ul {
+        gap: 5px;
+        grid-template-columns: repeat(4, 120px);
+        overflow-x: auto;
+    }
+
+    #section-2 ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab {
+        gap: 10px;
+        overflow-x: auto;
+    }
+
+    .tab::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-item span {
+        font-size: 0.7rem;
+    }
+
+    .shopping-trend-item span {
+        display: block;
+    }
+
+    #section {
+        margin-top: -50px;
+    }
+}
+
+@media (max-width: 26.25em) {
+    .tab-product-child {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .tab-product-item, .product-hp-item, .product-item-2, .product-item {
+        height: auto;
+        padding: 20px 0 40px;
+    }
+
+    .product-img {
+        height: auto;
+    }
+}
