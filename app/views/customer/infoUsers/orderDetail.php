@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./public/css/aside.css">
     <link rel="stylesheet" href="./public/responsive/header.css">
     <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/infoUser.css">
     <style>
         main {
             background-color: var(--matte-white-color);
@@ -67,10 +68,46 @@
             height: 130px;
         }
 
+        .price {
+            color: red;
+        }
+
         .product-img {
             width: 100px;
             border-radius: 4px;
         }
+
+        @media (max-width: 64em) and (min-width: 47.5625em) {
+            article {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 47.4375em) {
+            article {
+                width: 95%;
+            }
+
+            tbody,
+            thead {
+                font-size: 0.9rem;
+            }
+
+            th {
+                padding: 5px;
+            }
+
+            td {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 30.625em) {
+            .product-img {
+                width: 60px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -99,7 +136,7 @@
                         <tr>
                             <td><img src="<?=$row['product_image']?>" alt="Product Image" class="product-img"></td>
                             <td><?=$row['product_name']?></td>
-                            <td><?=$unit_priceF?><sup>₫</sup></td>
+                            <td class="price"><?=$unit_priceF?><sup>₫</sup></td>
                             <td><?=$row['quantity']?></td>
                         </tr>
                         <?php } ?>

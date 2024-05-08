@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./public/css/cart.css">
     <link rel="stylesheet" href="./public/responsive/header.css">
     <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/cart.css">
 </head>
 <body>
     <main class="main">
@@ -28,7 +29,7 @@
             <?php 
             if (!empty($datas['cart'])) {
             ?>
-            <div class="content-left">
+            <div class="content-left table-responsive">
                 <table class="table">
                     <thead>
                         <tr>

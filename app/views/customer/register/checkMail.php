@@ -21,7 +21,7 @@
         }
 
         article {
-            max-width: var(--width-1200);
+            max-width: 90%;
             margin: 40px auto;
         }
 
@@ -37,6 +37,12 @@
 
         .nottify-img img {
             width: 100%;
+        }
+
+        @media (max-width: 47.4375em) {
+            .nottify-text {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>

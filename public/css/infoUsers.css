@@ -121,3 +121,8 @@ article {
     margin-top: 10px;
     font-size: 0.9rem;
 }
+
+.user-name {
+    display: none;
+    font-weight: 500;
+}

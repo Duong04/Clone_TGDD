@@ -1,0 +1,98 @@
+@media (max-width: 76.875em) {
+    .container {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    .container {
+        max-width: 700px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    article,
+    aside {
+        width: 100%;
+    }
+
+    .name-image {
+        display: none;
+    }
+
+    .form-right>p {
+        display: none;
+    }
+
+    .user-name {
+        display: block;
+    }
+
+    .form-left {
+        border: none;
+    }
+}
+
+@media (max-width: 47.4375em) {
+    .container {
+        max-width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .form-left,
+    article,
+    aside {
+        width: 100%;
+    }
+
+    .name-image {
+        display: none;
+    }
+
+    .main-form form {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .form-right>p {
+        display: none;
+    }
+
+    .inp-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .inp-item label,
+    .inp-item input {
+        width: 100%;
+        text-align: start;
+    }
+
+    .btn-submit button {
+        margin: 0;
+    }
+
+    .user-name {
+        display: block;
+    }
+
+    .form-left {
+        border: none;
+    }
+
+    .tabs {
+        display: grid;
+        grid-template-columns: repeat(6, 150px);
+        overflow-x: auto;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 30.625em) {
+    
+}

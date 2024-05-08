@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./public/css/products.css">
     <link rel="stylesheet" href="./public/responsive/header.css">
     <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/products.css">
 </head>
 <body>
     <main class="main">

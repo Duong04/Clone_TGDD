@@ -1,0 +1,48 @@
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    article {
+        max-width: 700px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content-left {
+        width: 100%;
+    }
+
+    .content-right {
+        width: 30%;
+    }
+}
+
+@media (max-width: 47.4375em) {
+    article {
+        max-width: 90%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content-left {
+        width: 100%;
+    }
+
+    .content-right {
+        width: 50%;
+    }
+}
+
+@media (max-width: 30.625em) {
+    .content-right {
+        width: 100%;
+    }
+}
+
+@media (max-width: 25em) {
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .table td:nth-child(3),
+    .table td:nth-child(1) {
+        width: 21%;
+    }
+}

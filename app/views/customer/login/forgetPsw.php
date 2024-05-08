@@ -109,6 +109,17 @@
             font-size: 0.9rem;
             color: red;
         }
+
+        @media (max-width: 30.625em) {
+            .main-form img {
+                width: 250px;
+                top: -50px;
+            }
+            
+            .form {
+                box-shadow: none;
+            }
+        }
     </style>
 </head>
 <body>

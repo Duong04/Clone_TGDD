@@ -38,7 +38,7 @@
             color: #333;
         }
 
-        p {
+        .container p {
             color: #666;
             margin-bottom: 20px;
         }
@@ -55,6 +55,13 @@
 
         .btn:hover {
             background-color: #0056b3;
+        }
+
+        @media (max-width: 30.625em) {
+            .container {
+                box-shadow: none;
+                background-color: transparent;
+            }
         }
     </style>
 </head>
@@ -76,7 +83,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="./public/js/ajax.js"></script>
-    <script src="./public/js/checkout.js"></script>
     <script src="./public/js/header.js"></script>
 </body>
 

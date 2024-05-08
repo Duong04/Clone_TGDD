@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./public/css/infoUsers.css">
     <link rel="stylesheet" href="./public/responsive/header.css">
     <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/infoUser.css">
 </head>
 <body>
     <main class="main">
@@ -62,6 +63,7 @@
                                 <input type="file" name="user-image" id="user-image" hidden>
                             </div>
                             <p><strong>Định dạng:</strong> .JPEG, .PNG, .WEBP, .JPG</p>
+                            <div class="user-name"><?=$row['user_name']?></div>
                         </div>
                     </form>
                 </div>

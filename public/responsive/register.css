@@ -1,0 +1,43 @@
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    article {
+        max-width: 700px;
+    }
+
+    .content-left {
+        display: none;
+    }
+
+    .content-right {
+        width: 450px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 47.4375em) {
+    article {
+        max-width: 90%;
+    }
+
+    .content-left {
+        display: none;
+    }
+
+    .content-right {
+        width: 450px;
+        margin: auto;
+    }
+}
+
+@media (max-width: 30.625em) {
+    .main-form {
+        box-shadow: none;
+    }
+
+    .fb-gg-item span {
+        font-size: 0.8rem;
+    }
+
+    .link-login {
+        font-size: 0.8rem;
+    }
+}

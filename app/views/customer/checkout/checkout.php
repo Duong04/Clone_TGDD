@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./public/css/checkout.css">
     <link rel="stylesheet" href="./public/responsive/header.css">
     <link rel="stylesheet" href="./public/responsive/footer.css">
+    <link rel="stylesheet" href="./public/responsive/checkout.css">
 </head>
 <body>
     <main class="main">

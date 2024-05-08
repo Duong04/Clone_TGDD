@@ -7,7 +7,6 @@ $(document).ready(function() {
             url: './Home/Search',  
             data: { searchData: searchTerm },
             success: function(response) {
-                console.log(response);
                 $('#search-data').html(response);
             }
         });

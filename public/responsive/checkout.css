@@ -1,0 +1,30 @@
+@media (max-width: 64em) and (min-width: 47.5625em) {
+    
+}
+
+@media (max-width: 47.4375em) {
+    article {
+        width: 90%;
+    }
+
+    .table tr {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 30.625em) {
+    .table,
+    .table td:nth-child(3) p,
+    .sub-total {
+        font-size: 0.9rem;
+    }
+
+    .table td:nth-child(3),
+    .table td:nth-child(1) {
+        width: 22%;
+    }
+
+    .form-item {
+        width: 100%;
+    }
+}
